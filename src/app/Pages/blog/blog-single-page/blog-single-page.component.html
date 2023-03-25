@@ -19,15 +19,15 @@
                         <h1 class="mb-3 text-secondary text-uppercase font-weight-bold">{{Postname.title}}</h1>
                         <div [innerHTML]="Postname.content" ></div>
                     </div>
-                    <div class="d-flex justify-content-between bg-white border border-top-0 p-4">
+                    <div class="d-flex justify-content-between bg-white border border-top-0 p-2">
                         <div class="d-flex align-items-center">
                           
-                            <i class="fa fa-user rounded-circle mr-2" aria-hidden="true" style="font-size: 30px;"></i>
+                            <i class="fa fa-user rounded-circle m-2" aria-hidden="true" style="font-size: 30px;"></i>
                             <span>{{this.Postname.createdBy}}</span>
                         </div>
                         <div class="d-flex align-items-center">
-                            <span class="ml-3"> <a (click)="LikeButtonClick()"><i class="far  fa-thumbs-up mr-2" [ngStyle]="{'color':like?'blue':null}"></i> </a> {{this.Postname.likeCount}}</span>
-                            <span class="ml-3"><a (click)="DisLikeButtonClick()"><i class="far fa-thumbs-down mr-2" [ngStyle]="{'color':Dislike?'red':null}"></i></a>{{this.Postname.dislikeCout}}</span>
+                            <span class="m-1"> <a (click)="LikeButtonClick()"><i class="far  fa-thumbs-up m-2" [ngStyle]="{'color':like?'blue':null}"></i> </a> {{this.Postname.likeCount}}</span>
+                            <span class="m-1"><a (click)="DisLikeButtonClick()"><i class="far fa-thumbs-down m-2" [ngStyle]="{'color':Dislike?'red':null}"></i></a>{{this.Postname.dislikeCout}}</span>
                         </div>
                     </div>
                 </div>
@@ -36,7 +36,7 @@
                 <!-- Comment List Start -->
                 <div class="mb-3">
                     <div class="section-title mb-0">
-                        <h4 class="m-0 text-uppercase font-weight-bold">{{this.Postname.commentModels.length}} Comments</h4>
+                        <h4 class="m-1 text-uppercase font-weight-bold">{{this.Postname.commentModels.length}} Comments</h4>
                     </div>
                     <div class="bg-white border border-top-0 p-4">
                         <div class="media mb-4" *ngFor="let item of this.Postname.commentModels">
@@ -66,7 +66,7 @@
                                 <label for="message">Message *</label>
                                 <textarea id="message" cols="30" rows="5" class="form-control" formControlName="content"></textarea>
                             </div>
-                            <div class="form-group mb-0">
+                            <div class="form-group mt-2">
                                 <button class="btn btn-primary font-weight-semi-bold py-2 px-3" [disabled]="!Reactivefrom.valid"(click)="CommentButtonClick()" type="submit">Leave a comment</button>
                                 
                             </div>

@@ -39,6 +39,10 @@ export class SignUpComponent implements OnInit {
       console.log(this.reactivefrom.value);
             let loginModel =Object.assign({},this.reactivefrom.value);
             this.AuthService.SignUp(loginModel).subscribe(resp=>{
+              if(resp.success){
+                
+                this.router.navigate(['Login']);
+              }
               console.log(resp)
             });
     }
