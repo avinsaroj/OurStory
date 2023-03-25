@@ -18,7 +18,7 @@ import { NavBarModel } from '../Models/nav-bar-model';
   providedIn: 'root'
 })
 export class LoveStoryService {
-  APiUrl: string = 'https://192.168.1.37/api/LoveStory/';
+  APiUrl: string = 'https://192.168.1.33/api/LoveStory/';
   constructor(private HttpClient: HttpClient, private router: Router) { }
   GetAllPost():Observable<ServiceResponce<PostModel>>{
     return this.HttpClient.get<ServiceResponce<PostModel>>(this.APiUrl+"GetAllPost");  
