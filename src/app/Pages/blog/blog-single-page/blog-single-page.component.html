@@ -1,0 +1,144 @@
+
+
+
+<!-- News With Sidebar Start -->
+<div class="container-fluid" *ngIf="!DisplaySpinner">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <!-- News Detail Start -->
+                <div class="position-relative mb-3">
+                 
+                    <div class="bg-white border border-top-0 p-4">
+                        <div class="mb-3">
+                            <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
+                                href="">Blog</a>
+                            <a class="text-body" href="">{{Postname.createdOn| date:'dd MMMM yyyy'}}</a>
+                        </div>
+                        <img src="{{Postname.summary}}" class="img-thumbnail">
+                        <h1 class="mb-3 text-secondary text-uppercase font-weight-bold">{{Postname.title}}</h1>
+                        <div [innerHTML]="Postname.content" ></div>
+                    </div>
+                    <div class="d-flex justify-content-between bg-white border border-top-0 p-4">
+                        <div class="d-flex align-items-center">
+                          
+                            <i class="fa fa-user rounded-circle mr-2" aria-hidden="true" style="font-size: 30px;"></i>
+                            <span>{{this.Postname.createdBy}}</span>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <span class="ml-3"> <a (click)="LikeButtonClick()"><i class="far  fa-thumbs-up mr-2" [ngStyle]="{'color':like?'blue':null}"></i> </a> {{this.Postname.likeCount}}</span>
+                            <span class="ml-3"><a (click)="DisLikeButtonClick()"><i class="far fa-thumbs-down mr-2" [ngStyle]="{'color':Dislike?'red':null}"></i></a>{{this.Postname.dislikeCout}}</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- News Detail End -->
+
+                <!-- Comment List Start -->
+                <div class="mb-3">
+                    <div class="section-title mb-0">
+                        <h4 class="m-0 text-uppercase font-weight-bold">{{this.Postname.commentModels.length}} Comments</h4>
+                    </div>
+                    <div class="bg-white border border-top-0 p-4">
+                        <div class="media mb-4" *ngFor="let item of this.Postname.commentModels">
+                           
+                            <i class="fa fa-user rounded-circle mr-2" aria-hidden="true" style="font-size: 30px;"></i>
+
+                            <div class="media-body">
+                                <h6><a class="text-secondary font-weight-bold" href="">{{item.createdBy}}</a> <small><i>{{item.createdOn|date:'dd/MM/yyyy'}}</i></small></h6>
+                                <p>{{item.content}}</p>
+                                <button class="btn btn-sm btn-outline-secondary">Reply</button>
+                            </div>
+                        </div>
+                      
+                    </div>
+                </div>
+                <!-- Comment List End -->
+
+                <!-- Comment Form Start -->
+                <div class="mb-3">
+                    <div class="section-title mb-0">
+                        <h4 class="m-0 text-uppercase font-weight-bold">Leave a comment</h4>
+                    </div>
+                    <div class="bg-white border border-top-0 p-4">
+                        <form [formGroup]="Reactivefrom">
+                           
+                            <div class="form-group">
+                                <label for="message">Message *</label>
+                                <textarea id="message" cols="30" rows="5" class="form-control" formControlName="content"></textarea>
+                            </div>
+                            <div class="form-group mb-0">
+                                <button class="btn btn-primary font-weight-semi-bold py-2 px-3" [disabled]="!Reactivefrom.valid"(click)="CommentButtonClick()" type="submit">Leave a comment</button>
+                                
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- Comment Form End -->
+            </div>
+
+            <div class="col-lg-4">
+    
+                <!-- Popular News Start -->
+                <div class="mb-3">
+                    <div class="section-title mb-0">
+                        <h4 class="m-0 text-uppercase font-weight-bold">Tranding Blog</h4>
+                    </div>
+                    <div class="bg-white border border-top-0 p-3">
+                        <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;" *ngFor="let item of AllPost">
+                            
+                            <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
+                                <div class="mb-2">
+                                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" [routerLink]="['/Blog/BlogSinglePage',item.id]">Blog</a>
+                                    <a class="text-body" [routerLink]="['/Blog/BlogSinglePage',item.id]"><small>{{item.createdOn|date:'dd/MM/yyyy'}}</small></a>
+                                </div>
+                                <a class="h6 m-0 text-secondary text-uppercase font-weight-bold OverFlowchar" [routerLink]="['/Blog/BlogSinglePage',item.id]">{{item.title}}</a>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <!-- Popular News End -->
+
+                <!-- Newsletter Start -->
+                <div class="mb-3">
+                    <div class="section-title mb-0">
+                        <h4 class="m-0 text-uppercase font-weight-bold">Newsletter</h4>
+                    </div>
+                    <div class="bg-white text-center border border-top-0 p-3">
+                        <p>Aliqu justo et labore at eirmod justo sea erat diam dolor diam vero kasd</p>
+                        <div class="input-group mb-2" style="width: 100%;">
+                            <input type="text" class="form-control form-control-lg" placeholder="Your Email">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary font-weight-bold px-3">Sign Up</button>
+                            </div>
+                        </div>
+                        <small>Lorem ipsum dolor sit amet elit</small>
+                    </div>
+                </div>
+                <!-- Newsletter End -->
+
+                <!-- Tags Start -->
+                <div class="mb-3">
+                    <div class="section-title mb-0">
+                        <h4 class="m-0 text-uppercase font-weight-bold">Tags</h4>
+                    </div>
+                    <div class="bg-white border border-top-0 p-3">
+                        <div class="d-flex flex-wrap m-n1">
+                            <a href="" class="btn btn-sm btn-outline-secondary m-1">Politics</a>
+                            <a href="" class="btn btn-sm btn-outline-secondary m-1">Business</a>
+                            <a href="" class="btn btn-sm btn-outline-secondary m-1">Corporate</a>
+                            <a href="" class="btn btn-sm btn-outline-secondary m-1">Business</a>
+                            <a href="" class="btn btn-sm btn-outline-secondary m-1">Health</a>
+                            <a href="" class="btn btn-sm btn-outline-secondary m-1">Education</a>
+                            <a href="" class="btn btn-sm btn-outline-secondary m-1">Science</a>
+                            <a href="" class="btn btn-sm btn-outline-secondary m-1">Business</a>
+                            <a href="" class="btn btn-sm btn-outline-secondary m-1">Foods</a>
+                            <a href="" class="btn btn-sm btn-outline-secondary m-1">Travel</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tags End -->
+            </div>
+        </div>
+    </div>
+</div>

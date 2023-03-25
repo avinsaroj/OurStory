@@ -1,0 +1,16 @@
+/* You can add global styles to this file, and also import other style files */
+@import '../node_modules/font-awesome/css/font-awesome.css';
+@media screen and (max-width: 780px) {
+    .article_image {width: 100%}
+   
+  }
+  img{
+    width: 100%;
+  }
+  .OverFlowchar {
+    display: inline-block;
+    width: 280px;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+}

@@ -1,0 +1,125 @@
+<div class="container">
+    <div class="row mb-3">
+        <div class="col-3"></div>
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body my-3">
+                    <form [formGroup]="reactivefrom">
+                        <div class="row py-2">
+                            <div class="col-md-12">
+                                <label for="validationCustomUsername" class="form-label">Email Id</label>
+                                <div class="input-group has-validation">
+                                    <span class="input-group-text" id="inputGroupPrepend">@</span>
+                                    <input type="text" class="form-control"
+                                        [ngClass]="{'is-valid':reactivefrom.controls['email'].valid,'form-control':true,'is-invalid':!reactivefrom.controls['email'].valid && reactivefrom.controls['email'].touched}"
+                                        id="validationCustomUsername" formControlName="email">
+                                    <div class="invalid-feedback"
+                                        *ngIf="reactivefrom.controls['email'].errors?.['required']">
+                                        Please Enter Email Id
+                                    </div>
+                                    <div class="invalid-feedback"
+                                        *ngIf="reactivefrom.controls['email'].errors?.['email']">
+                                        Please Enter Correct Email Id.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row py-2">
+
+                            <div class="col-md-6">
+                                <label for="validationCustom01" class="form-label">First Name</label>
+                                <input type="text" id="validationCustom01"
+                                    [ngClass]="{'is-valid':reactivefrom.controls['firstName'].valid,'form-control':true,'is-invalid':!reactivefrom.controls['firstName'].valid && reactivefrom.controls['firstName'].touched}"
+                                    formControlName="firstName">
+                                <div class="invalid-feedback"
+                                    *ngIf="reactivefrom.controls['firstName'].errors?.['required']">
+                                    Please Enter First Name.
+                                </div>
+                                <div class="invalid-feedback"
+                                    *ngIf="reactivefrom.controls['firstName'].errors?.['minLength']">
+                                    Please Enter greater then 2 char..
+                                </div>
+
+                            </div>
+                            <div class="col-md-6">
+                                <label for="validationCustom02" class="form-label">Last Name</label>
+                                <input type="text" id="validationCustom02"
+                                    [ngClass]="{'is-valid':reactivefrom.controls['lastName'].valid,'form-control':true,'is-invalid':!reactivefrom.controls['lastName'].valid && reactivefrom.controls['lastName'].touched}"
+                                    formControlName="lastName">
+                                <div class="invalid-feedback"
+                                    *ngIf="reactivefrom.controls['lastName'].errors?.['required']">
+                                    Please Enter Last Name.
+                                </div>
+                                <div class="invalid-feedback"
+                                    *ngIf="reactivefrom.controls['lastName'].errors?.['minLength']">
+                                    Please Enter greater then 2 char..
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="row py-2">
+
+                            <div class="col-md-6">
+                                <label for="validationCustom03" class="form-label">Password</label>
+                                <input type="password" id="validationCustom03"
+                                    [ngClass]="{'is-valid':reactivefrom.controls['password'].valid,'form-control':true,'is-invalid':!reactivefrom.controls['password'].valid && reactivefrom.controls['password'].touched}"
+                                    formControlName="password">
+                                <div class="invalid-feedback"
+                                    *ngIf="reactivefrom.controls['password'].errors?.['required']">
+                                    Please Enter Password.
+                                </div>
+                                <div class="invalid-feedback"
+                                    *ngIf="reactivefrom.controls['password'].errors?.['minLength']">
+                                    Please Enter greater then 5 char..
+                                </div>
+                                <div class="invalid-feedback"
+                                *ngIf="reactivefrom.controls['password'].errors?.['minLength']">
+                                Please Enter greater then 5 char..
+                            </div>
+
+                            </div>
+                            <div class="col-md-6">
+                                <label for="validationCustom04" class="form-label">ConfirmPassword</label>
+                                <input type="password" id="validationCustom04"
+                                    [ngClass]="{'is-valid':reactivefrom.controls['confirmPassword'].valid,'form-control':true,'is-invalid':!reactivefrom.controls['confirmPassword'].valid && reactivefrom.controls['confirmPassword'].touched}"
+                                    formControlName="confirmPassword">
+                                <div class="invalid-feedback"
+                                    *ngIf="reactivefrom.controls['confirmPassword'].errors?.['required']">
+                                    Please Enter Last Name.
+                                </div>
+                                <div class="invalid-feedback"
+                                    *ngIf="reactivefrom.controls['confirmPassword'].errors?.['minLength']">
+                                    Please Enter greater then 5 char..
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="col-12">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="invalidCheck"
+                                    formControlName="isSuperUser">
+                                <label class="form-check-label" for="invalidCheck">
+                                    Agree to terms and conditions
+                                </label>
+                                <div class="invalid-feedback"
+                                    *ngIf="reactivefrom.controls['isSuperUser'].errors?.['requiredTrue']">
+                                    You must agree before submitting.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <button class="btn btn-primary w-100" [disabled]="!reactivefrom.valid"
+                                (click)="SignButtonClick()" type="submit">Login</button>
+                        </div>
+                        <div class="col-12">
+                            <p class="small mb-0">Don't have account? <a routerLink="/SignUp">Create an account</a></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-3"></div>
+    </div>
+</div>

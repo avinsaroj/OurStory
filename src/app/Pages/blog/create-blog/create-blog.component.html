@@ -1,0 +1,70 @@
+<div class="container">
+  <div class="row mb-3">
+
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body my-3">
+          <form [formGroup]="Reactivefrom">
+            <div class="row py-2">
+              
+                <div class="col-md-12">
+                  <label for="validationCustom03" class="form-label">Blog logo</label>
+                  
+                    <input formControlName="summary" id="file" type="file" class="form-control"
+                      (change)="onFileChange($event)">
+                  
+                </div>
+              
+              
+              <div class="col-md-12">
+                <label for="validationCustomUsername" class="form-label">Title</label>
+                <div class="input-group has-validation">
+                  <span class="input-group-text" id="inputGroupPrepend">*</span>
+                  <input type="text" class="form-control"
+                    [ngClass]="{'is-valid':Reactivefrom.controls['title'].valid,'form-control':true,'is-invalid':!Reactivefrom.controls['title'].valid && Reactivefrom.controls['title'].touched}"
+                    id="validationCustomUsername" formControlName="title">
+                  <div class="invalid-feedback" *ngIf="Reactivefrom.controls['title'].errors?.['required']">
+                    Please Enter title
+                  </div>
+                  <div class="invalid-feedback" *ngIf="Reactivefrom.controls['title'].errors?.['title']">
+                    Please Enter Correct Title .
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <label for="validationCustomUsername" class="form-label">Meta Title</label>
+                <div class="input-group has-validation">
+                  <span class="input-group-text" id="inputGroupPrepend">*</span>
+                  <input type="text" class="form-control"
+                    [ngClass]="{'is-valid':Reactivefrom.controls['metaTitle'].valid,'form-control':true,'is-invalid':!Reactivefrom.controls['metaTitle'].valid && Reactivefrom.controls['metaTitle'].touched}"
+                    id="validationCustomUsername" formControlName="metaTitle">
+                  <div class="invalid-feedback" *ngIf="Reactivefrom.controls['metaTitle'].errors?.['required']">
+                    Please Enter Meta Title
+                  </div>
+                  <div class="invalid-feedback" *ngIf="Reactivefrom.controls['metaTitle'].errors?.['metaTitle']">
+                    Please Enter Correct Title .
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row py-2">
+              <div class="col-md-12">
+                <label for="validationCustom03" class="form-label">Post</label>
+                <angular-editor formControlName="content" [config]="config"></angular-editor>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <button class="btn btn-primary w-100" [disabled]="!Reactivefrom.valid" (click)="PostButtonClick()"
+                type="submit">Post</button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{{x}}

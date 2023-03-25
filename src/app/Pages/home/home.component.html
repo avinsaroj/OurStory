@@ -1,0 +1,225 @@
+
+<div>
+  <label for="filePicker">Choose or drag a file:</label><br>
+  <input type="file" id="filePicker" (change)="handleFileSelect($event)">
+</div>
+<br>
+<div>
+  <h1>Base64 encoded version</h1>
+  <textarea id="base64textarea" placeholder="Base64 will appear here" cols="50" rows="15">{{base64textString}}</textarea>
+</div>
+<img src="{{base64textString}}">
+<div *ngIf="dstaLoad">
+  <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+        aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+        aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+        aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active" [ngClass]="{ 'active': i==0}" *ngFor="let item of navBarModer; let i=index">
+        <img src="../assets/images/slider-01.jpg" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <div class="lbox-caption">
+            <div class="lbox-details">
+              <h1>{{item.h1}}</h1>
+              <h2>{{item.p}}</h2>
+              <p>Save The Date <strong>20 June 2018</strong></p>
+              <a href="#" class="btn ">Contact</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+
+
+  <!-- End Banner -->
+
+  <!-- Start About us -->
+  <div id="about" class="about-box">
+    <div class="about-a1">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="title-box">
+              <h2>{{this.aboutU.name}} <span>&</span> {{this.aboutUF.name}}</h2>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="row align-items-center about-main-info">
+              <div class="col-lg-8 col-md-6 col-sm-12">
+                <h2> About <span>{{this.aboutUF.name}}</span></h2>
+                <p>{{this.aboutUF.descrip}}</p>
+              </div>
+              <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="about-img">
+                  <img [src]="this.aboutUF.imageName" class="img-fluid rounded" loading="lazy" alt="Fresh Orangey" />
+                </div>
+              </div>
+            </div>
+            <div class="row align-items-center about-main-info">
+              <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="about-img">
+                  <img class="img-fluid rounded" src="{{this.aboutU.imageName}}" alt="" />
+                </div>
+              </div>
+              <div class="col-lg-8 col-md-6 col-sm-12">
+                <h2> About <span>{{this.aboutU.name}}</span></h2>
+                <p>{{this.aboutU.descrip}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End About us -->
+
+  <!-- Start Story -->
+  <div id="story" class="story-box main-timeline-box">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="title-box">
+            <h2>Our Story</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+          </div>
+        </div>
+      </div>
+      <div class="row timeline-element separline" [ngClass]="{ 'reverse': odd}"
+        *ngFor="let item of ourStorymodel; let odd = odd;  let even = even;">
+        <div class="timeline-date-panel col-xs-12 col-md-6  align-left">
+          <div class="time-line-date-content">
+            <p class="mbr-timeline-date mbr-fonts-style display-font">
+              {{item.meetdate| date:'dd MMMM yyyy'}}
+            </p>
+          </div>
+        </div>
+        <span class="iconBackground"></span>
+        <div class="col-xs-12 col-md-6 align-left">
+          <div class="timeline-text-content">
+            <h4 class="mbr-timeline-title pb-3 mbr-fonts-style display-font"> {{item.titleName }}</h4>
+            <p class="mbr-timeline-text mbr-fonts-style display-7">
+              {{item.desciption }}
+            </p>
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>
+  <!-- End Story -->
+
+  <!-- Start Family -->
+  <div id="family" class="family-box">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="title-box">
+            <h2>Family</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let item of ourFamily">
+          <div class="single-team-member">
+            <div class="family-img">
+              <img class="img-fluid" src="{{item.imageName}}" alt="" />
+            </div>
+            <div class="family-info">
+              <h4>{{item.descs}} </h4>
+              <p> {{item.relation}} </p>
+            </div>
+          </div>
+        </div>
+       
+      </div>
+    </div>
+  </div>
+  <!-- End Family -->
+
+  <!-- Start Gallery -->
+  <div id="gallery" class="gallery-box">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="title-box">
+            <h2>Gallery</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+      <div class="row">
+        <ul class="popup-gallery clearfix">
+          <li *ngFor="let item of OurGallery">
+            <a href="{{item.imageName}}">
+              <img style="width: 100%;height: 50vh;" src="{{item.imageName}}" alt="single image">
+              <span class="overlay"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
+            </a>
+          </li>
+         
+          
+        </ul>
+      </div>
+    </div>
+    </div>
+  </div>
+  <!-- End Gallery -->
+
+  <!-- Start Events -->
+  <div id="events" class="events-box" >
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="title-box">
+            <h2>Blog</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let item of postModel">
+          <div class="event-inner">
+            <div class="event-img">
+              <img class="img-fluid" src="{{item.summary}}" alt="" style="width: 100%;height: 168px;" />
+            </div>
+            <h2 class="OverFlowchar">{{item.title}}</h2>
+             <p class="OverFlowchar">{{item.metaTitle}}</p>
+            
+            <a  [routerLink]="['Blog/BlogSinglePage',item.id]">Read More ></a>
+          </div>
+        </div>
+      
+      </div>
+    </div>
+  </div>
+  <!-- End Events -->
+
+  <!-- Start Contact -->
+  
+</div>
+<div class="d-flex justify-content-center" *ngIf="!dstaLoad">
+  <div class="spinner-border" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
