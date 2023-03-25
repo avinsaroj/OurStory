@@ -1,8 +1,4 @@
 
-  a.badge-dark:focus, a.badge-dark.focus {
-    outline: 0;
-    box-shadow: 0 0 0 0.2rem rgba(30, 32, 36, 0.5);
-  }
   .section-title {
     margin-bottom: 15px;
     padding: 15px;
