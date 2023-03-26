@@ -27,6 +27,7 @@ export class BlogSinglePageComponent implements OnInit {
   Dislike=false;
   likedislikepost =new LikeDislikeModel;
   AllPost:PostModel[]=[];
+  dstaLoad = false;
   constructor(private _fb:FormBuilder,private LoveStory:LoveStoryService,private AuthService:AuthService,private router: Router,private activateRoute: ActivatedRoute,public Utility:UtilityService){
 
   }
@@ -70,7 +71,7 @@ export class BlogSinglePageComponent implements OnInit {
       if(this.Postname!=null){
        this.like= this.Postname.likeDislikeModels.find(c=>c.userId==this.Userdetails.userId && c.postId==this.idvalue)?.likePost==true?true:false;
       this.Dislike=  this.Postname.likeDislikeModels.find(c=>c.userId==this.Userdetails.userId && c.postId==this.idvalue)?.dislikePost==true?true:false;
-      
+      this.dstaLoad = true;
        this. DisplaySpinner=false;
       }
     });

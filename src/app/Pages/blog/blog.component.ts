@@ -17,6 +17,7 @@ export class BlogComponent implements OnInit {
   Userdetails!: UserAccountDto;
   username!: string;
   Role!:string;
+  dstaLoad = false;
   constructor(private LoveStory: LoveStoryService, public AuthService: AuthService, private router: Router, public utilityService: UtilityService) {
 
   }
@@ -40,6 +41,7 @@ export class BlogComponent implements OnInit {
     }
     this.LoveStory.GetAllPost().subscribe(resp=>{
       this.AllPost=resp.data;
+      this.dstaLoad =true;
     })
   }
   GetUserDetails() {

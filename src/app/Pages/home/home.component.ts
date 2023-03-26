@@ -56,7 +56,7 @@ export class HomeComponent {
       }
 
     }
-    this.dstaLoad = true;
+   
   }
   GetUserDetails() {
 
@@ -121,7 +121,7 @@ export class HomeComponent {
                 this.LoveStory.getAboutUF(respose.data.userId).subscribe(resp => {
                   if (resp.success == true) {
                     this.aboutUF = resp.data;
-                  
+                    this.dstaLoad = true;
         
                   }
         
