@@ -111,27 +111,26 @@ export class HeaderComponent {
   }
   LogOut() {
    
-    console.log(this.AuthService.LogOut())
-    this.Role= this.AuthService.GetRole();
-    console.log(this.AuthService.GetRole());
+    this.AuthService.LogOut()
+   
     this.router.navigate(['Login']);
 
   }
   GetCartByUsers(username: string) {
-    console.log(username);
+   
     this.OnlineShopservice.GetCartByUser(username).subscribe(resp => {
       this.cartItemModel = resp.data;
       if (resp.success) {
         this.cartCount = resp.data.length;
         this.cartCountNumber=resp.data.length;
-        console.log(this.cartItemModel);
+       
         this.totalAmount=0;
         this.cartItemModel.forEach(element => {
           this.totalAmount+= (element.price-((element.discountDiscountPercent*element.price)/100)) *element.quantity
         });
       }
       
-      console.log(this.totalAmount);
+    
     });
 
   }

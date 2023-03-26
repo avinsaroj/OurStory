@@ -30,14 +30,13 @@ export class LoginComponent  implements OnInit{
     })
   }
   submitForm(){
-    console.log(this.reactiveform.value)
+    //console.log(this.reactiveform.value)
   }
   LoginButtonClick(){
     if(this.reactiveform.valid){
-console.log(this.reactiveform.value);
+
       let loginModel =Object.assign({},this.reactiveform.value);
-      console.log(loginModel);
-      console.log(loginModel.password,loginModel.email,loginModel.rememberMe);
+    
       this.AuthService.Login(loginModel).subscribe(Response=>
         {
          this.loginResponce=Response;
