@@ -76,7 +76,7 @@ export class HomeComponent {
         this.LoveStory.GetAllPostByUserId(respose.data.userId).subscribe(resp => {
           if (resp.success == true) {
             this.postModel = resp.data;
-            console.log(resp.data);
+           // console.log(resp.data);
            
           }
 
@@ -102,7 +102,7 @@ export class HomeComponent {
                 this.LoveStory.GetOurFamily(respose.data.userId).subscribe(resp=>{
         
                   if(resp.success==true){
-                    console.log(resp)
+                   // console.log(resp)
                     this.ourFamily=resp.data;
                   
                    
@@ -149,7 +149,7 @@ export class HomeComponent {
   _handleReaderLoaded(readerEvt:any) {
      var binaryString = readerEvt.target.result;
             this.base64textString= 'data:image/jpeg;base64,'+btoa(binaryString);
-            console.log('data:image/jpeg;base64,'+btoa(binaryString));
+           // console.log('data:image/jpeg;base64,'+btoa(binaryString));
     }
 
 }

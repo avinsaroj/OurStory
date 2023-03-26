@@ -98,7 +98,7 @@ onFileChange(event: any) {
     reader.onload = () => {
       
     this.imageSrc=  this.imageSrcLogo = reader.result as string;
-      console.log(this.imageSrcLogo);
+     // console.log(this.imageSrcLogo);
       this.Reactivefrom.patchValue({
         fileSource: this.imageSrcLogo
       });
@@ -107,14 +107,14 @@ onFileChange(event: any) {
 }
   PostButtonClick(){
     if(this.Reactivefrom.valid){
-      console.log(this.Reactivefrom.value);
+     // console.log(this.Reactivefrom.value);
       let PostModel =Object.assign({},this.Reactivefrom.value);
       PostModel.userId=this.Userdetails.userId;
       PostModel.summary=this.imageSrc;
       PostModel.createdBy=this.Userdetails.firstName +" "+ this.Userdetails.lastName;
-      console.log(PostModel);
+    //  console.log(PostModel);
       this.LoveStory.InsertPost(PostModel).subscribe(resp=>{
-        console.log(resp);
+      //  console.log(resp);
         if(resp.success==true){
           this.router.navigate(['/']);
         }

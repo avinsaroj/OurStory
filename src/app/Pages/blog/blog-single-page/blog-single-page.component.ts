@@ -66,7 +66,7 @@ export class BlogSinglePageComponent implements OnInit {
     this.idvalue= this.activateRoute.snapshot.paramMap.get('Id')
     this.LoveStory.GetPostId(this.idvalue).subscribe(resp=>{
       this.Postname=resp;
-      console.log(this.Postname)
+      //console.log(this.Postname)
       if(this.Postname!=null){
        this.like= this.Postname.likeDislikeModels.find(c=>c.userId==this.Userdetails.userId && c.postId==this.idvalue)?.likePost==true?true:false;
       this.Dislike=  this.Postname.likeDislikeModels.find(c=>c.userId==this.Userdetails.userId && c.postId==this.idvalue)?.dislikePost==true?true:false;
@@ -101,7 +101,7 @@ export class BlogSinglePageComponent implements OnInit {
       CommentModel.createdOn=now;
       CommentModel.updatedBy=this.Userdetails.firstName +" "+ this.Userdetails.lastName;
       CommentModel.createdBy=this.Userdetails.firstName +" "+ this.Userdetails.lastName;
-      console.log(CommentModel);
+     // console.log(CommentModel);
        this.LoveStory.InsertComment(CommentModel).subscribe(resp=>{
         if(resp.success==true){
         this.LoveStory.GetPostId(this.idvalue).subscribe(resp=>{
