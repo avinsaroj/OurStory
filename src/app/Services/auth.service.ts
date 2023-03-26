@@ -40,7 +40,7 @@ export class AuthService {
 
       this.role = decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
 
-      console.log(this.name, this.roles, this.role, this.userId, this.email, this.userName);
+      //console.log(this.name, this.roles, this.role, this.userId, this.email, this.userName);
     }
 
   }
