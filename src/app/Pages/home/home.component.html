@@ -134,7 +134,7 @@
         <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let item of ourFamily">
           <div class="single-team-member">
             <div class="family-img">
-              <img class="img-fluid" src="{{item.imageName}}" alt="" />
+              <img class="img-fluid" src="{{item.imageName}}" alt=""  />
             </div>
             <div class="family-info">
               <h4>{{item.descs}} </h4>
@@ -163,7 +163,7 @@
       <div class="row">
         <ul class="popup-gallery clearfix">
           <li *ngFor="let item of OurGallery">
-            <a href="{{item.imageName}}">
+            <a href="{{item.imageName}}" target="_blank">
               <img style="width: 100%;height: 50vh;" src="{{item.imageName}}" alt="single image">
               <span class="overlay"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
             </a>
