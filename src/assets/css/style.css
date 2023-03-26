@@ -502,6 +502,7 @@ button:focus{
     background-color: #f1f1f1;
     left: calc(50% - 1px);
     height: calc(100% + 4rem);
+	z-index: -100;
 }
 
 .main-timeline-box .iconBackground {
@@ -517,6 +518,7 @@ button:focus{
     background-color: #f1f1f1;
     top: 20px;
     margin-left: -10px;
+	z-index: -100;
 }
 .main-timeline-box .timeline-text-content {
     padding: 30px 35px;
