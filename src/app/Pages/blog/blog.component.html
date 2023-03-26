@@ -1,3 +1,5 @@
+
+<div *ngIf="dstaLoad">
 <div id="events" class="events-box">
     <div class="container">
       <div class="row">
@@ -23,4 +25,11 @@
       </div>
     </div>
   </div>
+</div>
   <!-- End Events -->
+
+  <div class="d-flex justify-content-center" *ngIf="!dstaLoad">
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>

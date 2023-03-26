@@ -61,7 +61,7 @@ export class CreateBlogComponent implements OnInit {
       dislikeCout: [null],
       
       summary: ['', [Validators.required]],
-      published: true,
+      published: false,
       createdOn: [null],
       createdBy: [null],
       updatedOn: [null],
@@ -112,7 +112,7 @@ onFileChange(event: any) {
       PostModel.userId=this.Userdetails.userId;
       PostModel.summary=this.imageSrc;
       PostModel.createdBy=this.Userdetails.firstName +" "+ this.Userdetails.lastName;
-    //  console.log(PostModel);
+     console.log(PostModel);
       this.LoveStory.InsertPost(PostModel).subscribe(resp=>{
       //  console.log(resp);
         if(resp.success==true){

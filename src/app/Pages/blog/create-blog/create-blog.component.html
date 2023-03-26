@@ -53,7 +53,15 @@
                 <angular-editor formControlName="content" [config]="config"></angular-editor>
               </div>
             </div>
-
+            <div class="row py-2">
+              <div class="col-md-12">
+                <label class="form-label" style="font-size: 26px;font-weight: 500;">Publish</label>
+                <label class="switch " style="margin-left: 10px;">
+                  <input type="checkbox" formControlName="published">
+                  <span class="slider round"></span>
+                </label>
+              </div>
+            </div>
             <div class="col-12">
               <button class="btn btn-primary w-100" [disabled]="!Reactivefrom.valid" (click)="PostButtonClick()"
                 type="submit">Post</button>
@@ -67,4 +75,3 @@
   </div>
 </div>
 
-{{x}}
