@@ -23,6 +23,9 @@ export class LoginComponent  implements OnInit{
   }
  
   ngOnInit(): void {
+    this.OnlineShopservice.GetAllProducts().subscribe(resp=>{
+      console.log("hi");
+    })
     this.reactiveform=this._fb.group({
       email:[null,[Validators.required,Validators.email]],
       password:[null,[Validators.required,Validators.minLength(5)]],
