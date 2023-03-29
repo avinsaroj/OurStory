@@ -13,6 +13,7 @@ import { AuthInterceptor } from './Interceptor/auth.interceptor';
 import { JwtModule } from '@auth0/angular-jwt';
 import { LoginComponent } from './Components/login/login.component';
 import { SignUpComponent } from './Components/sign-up/sign-up.component';
+import { NgxImageCompressService } from 'ngx-image-compress';
 export function tokenGetter() {
   return localStorage.getItem("AuthToken");
 }
@@ -40,6 +41,7 @@ export function tokenGetter() {
   ],
   providers: [
     {provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true},
+    NgxImageCompressService
 
   ],
   bootstrap: [AppComponent]

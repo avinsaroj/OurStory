@@ -6,6 +6,7 @@ import { UserAccountDto } from 'src/app/Models/user-account-dto';
 import { AuthService } from 'src/app/Services/auth.service';
 import { LoveStoryService } from 'src/app/Services/love-story.service';
 import { UtilityService } from 'src/app/Services/utility.service';
+import {NgxImageCompressService} from 'ngx-image-compress';
 
 @Component({
   selector: 'app-create-blog',
@@ -15,6 +16,8 @@ import { UtilityService } from 'src/app/Services/utility.service';
 export class CreateBlogComponent implements OnInit {
   Reactivefrom!:FormGroup;
   x='';
+  imgResultBeforeCompression: string = '';
+  imgResultAfterCompression: string = '';
   config: AngularEditorConfig = {
     editable: true,
     spellcheck: true,
@@ -30,9 +33,10 @@ export class CreateBlogComponent implements OnInit {
   Userdetails!: UserAccountDto;
   username!: string;
   Role!:string;
-  constructor(private _fb:FormBuilder,private LoveStory: LoveStoryService, public AuthService: AuthService, private router: Router, public utilityService: UtilityService) {
+  constructor(private imageCompress: NgxImageCompressService,private _fb:FormBuilder,private LoveStory: LoveStoryService, public AuthService: AuthService, private router: Router, public utilityService: UtilityService) {
 
   }
+ 
  
   ngOnInit(): void {
    
@@ -60,7 +64,7 @@ export class CreateBlogComponent implements OnInit {
       likeCount: [null],
       dislikeCout: [null],
       
-      summary: ['', [Validators.required]],
+      summary: [null],
       published: false,
       createdOn: [null],
       createdBy: [null],
@@ -98,19 +102,40 @@ onFileChange(event: any) {
     reader.onload = () => {
       
     this.imageSrc=  this.imageSrcLogo = reader.result as string;
-     // console.log(this.imageSrcLogo);
+      console.log(this.imageSrcLogo);
       this.Reactivefrom.patchValue({
         fileSource: this.imageSrcLogo
       });
     };
   }
 }
+compressFile(event: any) {
+  this.imageCompress.uploadFile().then(({image, orientation}) => {
+      this.imgResultBeforeCompression = image;
+      console.log('Size in bytes of the uploaded image was:', this.imageCompress.byteCount(image));
+
+      this.imageCompress
+          .compressFile(image, orientation, 40, 40) // 50% ratio, 50% quality
+          .then(compressedImage => {
+            if(compressedImage!=null){
+              this.imageSrc=  this.imgResultAfterCompression = compressedImage;
+              console.log(this.imageSrc,this.imgResultAfterCompression);
+            }
+           
+              
+          });
+  });
+}
   PostButtonClick(){
     if(this.Reactivefrom.valid){
      // console.log(this.Reactivefrom.value);
       let PostModel =Object.assign({},this.Reactivefrom.value);
       PostModel.userId=this.Userdetails.userId;
-      PostModel.summary=this.imageSrc;
+      if(this.imageSrc!=null){
+        PostModel.summary=this.imageSrc;
+      }
+     
+      console.log(PostModel.summary);
       PostModel.createdBy=this.Userdetails.firstName +" "+ this.Userdetails.lastName;
      console.log(PostModel);
       this.LoveStory.InsertPost(PostModel).subscribe(resp=>{

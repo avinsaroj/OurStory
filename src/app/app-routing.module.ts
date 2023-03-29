@@ -13,6 +13,7 @@ const routes: Routes = [{ path: '', loadChildren: () => import('./Pages/home/hom
 {
   path:'SignUp',component:SignUpComponent
 },
+{ path: 'DashBoard', loadChildren: () => import('./Pages/dash-board/dash-board.module').then(m => m.DashBoardModule) },
 {path:'**',component:PageNotFountComponent}
 
 ];

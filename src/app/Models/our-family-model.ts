@@ -8,4 +8,5 @@ export interface OurFamilyModel {
     updatedOn: Date,
     updatedBy: string,
     userId: string,
+    enable:boolean
 }

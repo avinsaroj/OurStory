@@ -9,8 +9,9 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class AuthService {
-
-  APiUrl: string = 'https://192.168.1.33/api/Auth/';
+  //https://localhost:7289/
+  //https://192.168.1.33
+  APiUrl: string = 'https://localhost:7289/api/Auth/';
   name: string = "";
   surname: string = "";
   userName: string = "";
@@ -72,7 +73,7 @@ export class AuthService {
     }
   }
   GetUserDetails(username: string): Observable<SingleServiceResponce<UserAccountDto>> {
-    let api = `https://192.168.1.33/api/UserAccount/GetUserDetails/${username}`;
+    let api = `https://localhost:7289/api/UserAccount/GetUserDetails/${username}`;
     return this.HttpClient.get<SingleServiceResponce<UserAccountDto>>(api);
 
   }

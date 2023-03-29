@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { DatePipe } from '@angular/common';
+import { AfterContentChecked, ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AboutUsRequest } from 'src/app/Models/about-us-requerst';
 import { GalleryModel } from 'src/app/Models/gallery-model';
@@ -15,9 +17,10 @@ import { UtilityService } from 'src/app/Services/utility.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
+ 
 })
-export class HomeComponent {
+export class HomeComponent  implements OnInit{
   userRole: string='';
   Userdetails: UserAccountDto={} as UserAccountDto;
   username: string='';
@@ -31,10 +34,66 @@ export class HomeComponent {
   ourFamily:OurFamilyModel[]=[];
   logo:LogoModel= {} as LogoModel;
   navBarModer:NavBarModel[]=[];
-  constructor(private LoveStory: LoveStoryService, public AuthService: AuthService, private router: Router, public utilityService: UtilityService) {
-
+  enableAboutU=false;
+  enableAboutF=false;
+  enableOurStory=true;
+  enableOurFamily=true;
+  
+  AboutUform: FormGroup;
+  AboutUF:FormGroup;
+  OurStoryForm:FormGroup;
+  Ourfamily:FormGroup;
+  example = { first: "", last: "" };
+  constructor(builder: FormBuilder,private LoveStory: LoveStoryService, public AuthService: AuthService, private router: Router, public utilityService: UtilityService) {
+    
+    this.Ourfamily=builder.group({
+      id: [{value: '', disabled: this.enableAboutU}],
+      imageName: [{value: '', disabled: this.enableAboutU}],
+      relation: [{value: '', disabled: this.enableAboutU}],
+      descs: [{value: '', disabled: this.enableAboutU}],
+      createdOn: [{value: '', disabled: this.enableAboutU}],
+      createdBy: [{value: '', disabled: this.enableAboutU}],
+      updatedOn: [{value: '', disabled: this.enableAboutU}],
+      updatedBy: [{value: '', disabled: this.enableAboutU}],
+      userId: [{value: '', disabled: this.enableAboutU}],
+    });
+ this.OurStoryForm=builder.group({
+  id: [{value: '', disabled: this.enableAboutU}],
+  titleName: [{value: '', disabled: this.enableAboutU}],
+  desciption: [{value: '', disabled: this.enableAboutU}],
+  meetdate:[{value:'', disabled: this.enableAboutU}],
+  createdOn: [{value: '', disabled: this.enableAboutU}],
+  createdBy: [{value: '', disabled: this.enableAboutU}],
+  updatedOn: [{value: '', disabled: this.enableAboutU}],
+  updatedBy: [{value: '', disabled: this.enableAboutU}],
+  userId: [{value: '', disabled: this.enableAboutU}], 
+ });
+    this.AboutUform=builder.group({
+      id :[{value: '', disabled: this.enableAboutU}],
+      name :[{value: '', disabled: this.enableAboutU}],
+     createdOn :[{value: '', disabled: this.enableAboutU}],
+     imageName :[{value: '', disabled: this.enableAboutU}],
+      descrip  :[{value: '', disabled: this.enableAboutU}],
+      createdBy :[{value: '', disabled: this.enableAboutU}],
+    updatedOn  :[{value: '', disabled: this.enableAboutU}],
+      updatedBy :[{value: '', disabled: this.enableAboutU}],
+     userId   :[{value: '', disabled: this.enableAboutU}],
+    });
+    this.AboutUF=builder.group({
+      id :[{value: '', disabled: this.enableAboutF}],
+      name :[{value: '', disabled: this.enableAboutF}],
+     createdOn :[{value: '', disabled: this.enableAboutF}],
+     imageName :[{value: '', disabled: this.enableAboutF}],
+      descrip  :[{value: '', disabled: this.enableAboutF}],
+      createdBy :[{value: '', disabled: this.enableAboutF}],
+    updatedOn  :[{value: '', disabled: this.enableAboutF}],
+      updatedBy :[{value: '', disabled: this.enableAboutF}],
+     userId   :[{value: '', disabled: this.enableAboutF}],
+    });
   }
+ 
 
+  
   ngOnInit(): void {
 
     if (this.AuthService.isAuthenticated()) {
@@ -69,7 +128,7 @@ export class HomeComponent {
         this.LoveStory.getAboutU(respose.data.userId).subscribe(resp => {
           if (resp.success == true) {
             this.aboutU = resp.data;
-           
+           //console.log(this.aboutU);
           }
 
         });
@@ -104,7 +163,7 @@ export class HomeComponent {
                   if(resp.success==true){
                    // console.log(resp)
                     this.ourFamily=resp.data;
-                  
+                 // console.log(this.ourFamily)
                    
                   }
                   
@@ -113,7 +172,7 @@ export class HomeComponent {
         
                   if(resp.success==true){
                     this.OurGallery=resp.data;
-                   
+                  // console.log(this.OurGallery)
                    
                   }
                   
@@ -122,7 +181,7 @@ export class HomeComponent {
                   if (resp.success == true) {
                     this.aboutUF = resp.data;
                     this.dstaLoad = true;
-        
+                   // console.log(this.AboutUF)
                   }
         
                 })
@@ -150,6 +209,75 @@ export class HomeComponent {
      var binaryString = readerEvt.target.result;
             this.base64textString= 'data:image/jpeg;base64,'+btoa(binaryString);
            // console.log('data:image/jpeg;base64,'+btoa(binaryString));
+    }
+    onClickAboutU(){
+      this.aboutU.enable=!this.aboutU.enable;
+    }
+    onClickAboutF(){
+      this.aboutUF.enable=!this.aboutUF.enable;
+    }
+    OnclickOurStory(item:OurStoryModel){
+ 
+      let indexValue = this.ourStorymodel.indexOf(item);
+      // changing specific element in array
+       this.ourStorymodel[indexValue].enable =  !item.enable;
+      // console.log(item.enable)
+ 
+    }
+    OnclickOurStorySave(item:OurStoryModel){
+    
+        this.LoveStory.InsertOurStory(item).subscribe(resp=>{
+
+          if(resp.success){
+           // console.log(resp.success)
+            this.LoveStory.GetOurStory(this.Userdetails.userId).subscribe(resp=>{
+        
+              if(resp.success==true){
+                this.ourStorymodel=resp.data;
+               // console.log(this.ourStorymodel);
+               
+               //  console.log(this.ourStorymodel.find(c=>c.id==item.id));
+               
+              }
+              
+                    });
+          
+          }
+        })
+      
+     
+       
+ 
+    }
+    OnclickOurFamily(item:OurFamilyModel){
+      
+        let indexValue = this.ourFamily.indexOf(item);
+        // changing specific element in array
+         this.ourFamily[indexValue].enable =  !item.enable;
+        
+      
+     
+ 
+    }
+    OnclickOurFamilysave(item:OurFamilyModel){
+      
+      if(this.Ourfamily.valid){
+        
+         let Family =Object.assign({},this.Ourfamily.value);
+        
+         this.LoveStory.InsertFamily(item).subscribe(resp=>{
+
+        if(resp.success){
+          let indexValue = this.ourFamily.indexOf(item);
+      // changing specific element in array
+       this.ourFamily[indexValue].enable =  !item.enable;
+        }
+         })
+        
+      
+      }
+    
+ 
     }
 
 }

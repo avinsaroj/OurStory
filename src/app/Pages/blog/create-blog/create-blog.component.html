@@ -6,17 +6,23 @@
         <div class="card-body my-3">
           <form [formGroup]="Reactivefrom">
             <div class="row py-2">
-              
+              <div class="col-md-12">
+                <img [src]="imgResultAfterCompression" *ngIf="imgResultAfterCompression"  style="width: 100px; height: 100px;" />
+              </div>
                 <div class="col-md-12">
                   <label for="validationCustom03" class="form-label">Blog logo</label>
                   
-                    <input formControlName="summary" id="file" type="file" class="form-control"
-                      (change)="onFileChange($event)">
+                   
+                      <input  id="file" type="file" class="form-control"
+                      (click)="compressFile($event)">
+
+                    
                   
                 </div>
               
               
               <div class="col-md-12">
+                <input type="text">
                 <label for="validationCustomUsername" class="form-label">Title</label>
                 <div class="input-group has-validation">
                   <span class="input-group-text" id="inputGroupPrepend">*</span>

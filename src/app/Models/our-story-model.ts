@@ -8,4 +8,5 @@ export interface OurStoryModel {
     updatedOn: Date,
     updatedBy: string,
     userId: string, 
+    enable:boolean
 }

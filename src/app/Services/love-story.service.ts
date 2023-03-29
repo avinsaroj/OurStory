@@ -18,7 +18,9 @@ import { NavBarModel } from '../Models/nav-bar-model';
   providedIn: 'root'
 })
 export class LoveStoryService {
-  APiUrl: string = 'https://192.168.1.33/api/LoveStory/';
+  //https://localhost:7289/
+  //https://192.168.1.33/
+  APiUrl: string = 'https://localhost:7289/api/LoveStory/';
   constructor(private HttpClient: HttpClient, private router: Router) { }
   GetAllPost():Observable<ServiceResponce<PostModel>>{
     return this.HttpClient.get<ServiceResponce<PostModel>>(this.APiUrl+"GetAllPost");  
@@ -59,6 +61,12 @@ export class LoveStoryService {
   }
   GetNavBar(userid:string):Observable<ServiceResponce<NavBarModel>>{
     return this.HttpClient.get<ServiceResponce<NavBarModel>>(this.APiUrl+`GetNavBar/${userid}`)
+  }
+  InsertFamily(model:OurFamilyModel):Observable<SingleServiceResponce<number>>{
+    return this.HttpClient.post<SingleServiceResponce<number>>(this.APiUrl+"InsertOurFamily",model)
+  }
+  InsertOurStory(model:OurStoryModel):Observable<SingleServiceResponce<number>>{
+    return this.HttpClient.post<SingleServiceResponce<number>>(this.APiUrl+"InsertOurStory",model)
   }
 }
 

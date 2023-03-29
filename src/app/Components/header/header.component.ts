@@ -68,18 +68,7 @@ export class HeaderComponent {
   GetUserDetail(username: string) {
     this.AuthService.GetUserDetails(username).subscribe(respose => {
       this.Userdetails = respose.data
-      if(respose.data){
-        this.LoveStory.GetLogo(respose.data.userId).subscribe(resp=>{
-        
-          if(resp.success==true){
-            this.logo=resp.data;
-          
-           
-          }
-          
-                });
-      }
-     
+    
     })
   }
   getRole(): string {
