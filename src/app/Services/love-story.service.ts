@@ -20,7 +20,7 @@ import { NavBarModel } from '../Models/nav-bar-model';
 export class LoveStoryService {
   //https://localhost:7289/
   //https://192.168.1.33/
-  APiUrl: string = 'https://localhost:7289/api/LoveStory/';
+  APiUrl: string = 'https://192.168.1.35/api/LoveStory/';
   constructor(private HttpClient: HttpClient, private router: Router) { }
   GetAllPost():Observable<ServiceResponce<PostModel>>{
     return this.HttpClient.get<ServiceResponce<PostModel>>(this.APiUrl+"GetAllPost");  

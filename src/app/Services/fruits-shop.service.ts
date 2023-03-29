@@ -14,7 +14,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class FruitsShopService {
   changeCart = new Subject();
-   ApiUrl="https://localhost:7289/api/OnlineShop/";
+   ApiUrl="https://192.168.1.35/api/OnlineShop/";
  // https://localhost:7289/
  //https://192.168.1.33/
    constructor(private HttpClient:HttpClient,private router: Router,) { }
@@ -32,7 +32,7 @@ export class FruitsShopService {
    }
    GetProductById(id:any):Observable<SingleServiceResponce<Products>>{
      
-     const api = `https://localhost:7289/api/OnlineShop/GetProductById/${id}`;
+     const api = `https://192.168.1.35/api/OnlineShop/GetProductById/${id}`;
      console.log(api);
      return this.HttpClient.get<SingleServiceResponce<Products>>(api);
    }
