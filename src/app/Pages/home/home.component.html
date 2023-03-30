@@ -10,7 +10,17 @@
     </div>
     <div class="carousel-inner">
       <div class="carousel-item active" [ngClass]="{ 'active': i==0}" *ngFor="let item of navBarModer; let i=index">
-        <img src="../assets/images/slider-01.jpg" class="d-block w-100" alt="...">
+
+        <img src="{{item.imageName}}" class="d-block w-100" alt="...">
+        <h2 class="text-center mb-5 ">         <button class="btns ml-3" [hidden]="!item.enable" (click)="compressFileNav(item)"> <i class="far fa-file-image ml-1" style="font-size: 15px;"></i></button>
+
+          <button class="btns" *ngIf="!item.enable" (click)="OnclickOurNavBar(item)">
+          <i class="far fa-edit ml-1" style="font-size: 15px;"></i></button>
+          <button class="btns" *ngIf="item.enable" (click)="OnclickOurNavbarsave(item)">
+            <i class="far fa-save ml-2" style="font-size: 15px;"></i></button>
+
+      </h2>
+      
         <div class="carousel-caption d-none d-md-block">
           <div class="lbox-caption">
             <div class="lbox-details">
@@ -18,6 +28,15 @@
               <h2>{{item.p}}</h2>
               <p>Save The Date <strong>20 June 2018</strong></p>
               <a href="#" class="btn ">Contact</a>
+              <h2>         <button class="btns ml-3" [hidden]="!item.enable" (click)="compressFileNav(item)"> <i class="far fa-file-image ml-1" style="font-size: 15px;"></i></button>
+
+                <button class="btns" *ngIf="!item.enable" (click)="OnclickOurNavBar(item)">
+                <i class="far fa-edit ml-1" style="font-size: 15px;"></i></button>
+                <button class="btns" *ngIf="item.enable" (click)="OnclickOurNavbarsave(item)">
+                  <i class="far fa-save ml-2" style="font-size: 15px;"></i></button>
+      
+            </h2>
+
             </div>
           </div>
         </div>

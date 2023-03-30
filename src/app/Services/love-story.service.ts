@@ -74,6 +74,9 @@ export class LoveStoryService {
   InsertAboutUF(model:AboutUsRequest):Observable<SingleServiceResponce<number>>{
     return this.HttpClient.post<SingleServiceResponce<number>>(this.APiUrl+"InsertAboutUF",model)
   }
+  InsertNavbar(model:NavBarModel):Observable<SingleServiceResponce<number>>{
+    return this.HttpClient.post<SingleServiceResponce<number>>(this.APiUrl+"InsertNavBar",model)
+  }
 }
 
 

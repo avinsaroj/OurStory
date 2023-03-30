@@ -212,6 +212,16 @@ export class HomeComponent  implements OnInit{
      
  
     }
+    OnclickOurNavBar(item:NavBarModel){
+      
+      let indexValue = this.navBarModer.indexOf(item);
+      // changing specific element in array
+       this.navBarModer[indexValue].enable =  !item.enable;
+      
+    
+   
+
+  }
     OnclickOurFamilysave(item:OurFamilyModel){
       
     
@@ -229,6 +239,23 @@ export class HomeComponent  implements OnInit{
     
  
     }
+    OnclickOurNavbarsave(item:NavBarModel){
+      
+    
+      this.LoveStory.InsertNavbar(item).subscribe(resp=>{
+
+     if(resp.success){
+       let indexValue = this.navBarModer.indexOf(item);
+   // changing specific element in array
+    this.navBarModer[indexValue].enable =  !item.enable;
+     }
+      })
+     
+   
+   
+ 
+
+ }
     OnclickAboutUFsave(){
       
     
@@ -300,12 +327,32 @@ this.aboutU.enable=false;
           console.log('Size in bytes of the uploaded image was:', this.imageCompress.byteCount(image));
     
           this.imageCompress
-              .compressFile(image, orientation, 40, 40,300) // 50% ratio, 50% quality
+              .compressFile(image, orientation, 40, 40) // 50% ratio, 50% quality
               .then(compressedImage => {
                 if(compressedImage!=null){
                   let indexValue = this.ourFamily.indexOf(item);
                   // changing specific element in array
                    this.ourFamily[indexValue].imageName   = compressedImage;;
+                  
+                 
+                }
+               
+                  
+              });
+      });
+    }
+    compressFileNav(item:NavBarModel) {
+      this.imageCompress.uploadFile().then(({image, orientation}) => {
+        
+          console.log('Size in bytes of the uploaded image was:', this.imageCompress.byteCount(image));
+    
+          this.imageCompress
+              .compressFile(image, orientation, 40, 40) // 50% ratio, 50% quality
+              .then(compressedImage => {
+                if(compressedImage!=null){
+                  let indexValue = this.navBarModer.indexOf(item);
+                  // changing specific element in array
+                   this.navBarModer[indexValue].imageName   = compressedImage;;
                   
                  
                 }
