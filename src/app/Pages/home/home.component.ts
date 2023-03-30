@@ -96,7 +96,7 @@ export class HomeComponent  implements OnInit{
         this.LoveStory.GetNavBar(respose.data.userId).subscribe(resp => {
           if (resp.success == true) {
             this.navBarModer = resp.data;
-           
+           console.log(this.navBarModer);
            
           }
 
@@ -213,7 +213,7 @@ export class HomeComponent  implements OnInit{
  
     }
     OnclickOurNavBar(item:NavBarModel){
-      
+      console.log(item);
       let indexValue = this.navBarModer.indexOf(item);
       // changing specific element in array
        this.navBarModer[indexValue].enable =  !item.enable;
