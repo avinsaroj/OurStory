@@ -84,7 +84,7 @@ export class HomeComponent  implements OnInit{
         this.LoveStory.getAboutU(respose.data.userId).subscribe(resp => {
           if (resp.success == true) {
             this.aboutU = resp.data;
-           console.log(this.aboutU);
+          // console.log(this.aboutU);
           }
 
         });
@@ -99,7 +99,7 @@ export class HomeComponent  implements OnInit{
         this.LoveStory.GetNavBar(respose.data.userId).subscribe(resp => {
           if (resp.success == true) {
             this.navBarModer = resp.data;
-           console.log(this.navBarModer);
+           //console.log(this.navBarModer);
            
           }
 
@@ -232,7 +232,7 @@ export class HomeComponent  implements OnInit{
  
     }
     OnclickOurNavBar(item:NavBarModel){
-      console.log(item);
+     // console.log(item);
       let indexValue = this.navBarModer.indexOf(item);
       // changing specific element in array
        this.navBarModer[indexValue].enable =  !item.enable;
@@ -313,7 +313,7 @@ this.aboutU.enable=false;
     compressFileUF() {
       this.imageCompress.uploadFile().then(({image, orientation}) => {
         
-          console.log('Size in bytes of the uploaded image was:', this.imageCompress.byteCount(image));
+         // console.log('Size in bytes of the uploaded image was:', this.imageCompress.byteCount(image));
     
           this.imageCompress
               .compressFile(image, orientation, 40, 40) // 50% ratio, 50% quality
@@ -330,7 +330,7 @@ this.aboutU.enable=false;
     compressFileGallery() {
       this.imageCompress.uploadFile().then(({image, orientation}) => {
         
-          console.log('Size in bytes of the uploaded image was:', this.imageCompress.byteCount(image));
+          //console.log('Size in bytes of the uploaded image was:', this.imageCompress.byteCount(image));
     
           this.imageCompress
               .compressFile(image, orientation, 40, 40) // 50% ratio, 50% quality
@@ -349,7 +349,7 @@ this.aboutU.enable=false;
     compressFileU() {
       this.imageCompress.uploadFile().then(({image, orientation}) => {
         
-          console.log('Size in bytes of the uploaded image was:', this.imageCompress.byteCount(image));
+         // console.log('Size in bytes of the uploaded image was:', this.imageCompress.byteCount(image));
     
           this.imageCompress
               .compressFile(image, orientation, 40, 40) // 50% ratio, 50% quality
@@ -367,7 +367,7 @@ this.aboutU.enable=false;
     compressFileFamily(item:OurFamilyModel) {
       this.imageCompress.uploadFile().then(({image, orientation}) => {
         
-          console.log('Size in bytes of the uploaded image was:', this.imageCompress.byteCount(image));
+         // console.log('Size in bytes of the uploaded image was:', this.imageCompress.byteCount(image));
     
           this.imageCompress
               .compressFile(image, orientation, 40, 40) // 50% ratio, 50% quality
@@ -387,7 +387,7 @@ this.aboutU.enable=false;
     compressFileNav(item:NavBarModel) {
       this.imageCompress.uploadFile().then(({image, orientation}) => {
         
-          console.log('Size in bytes of the uploaded image was:', this.imageCompress.byteCount(image));
+         // console.log('Size in bytes of the uploaded image was:', this.imageCompress.byteCount(image));
     
           this.imageCompress
               .compressFile(image, orientation, 40, 40) // 50% ratio, 50% quality
