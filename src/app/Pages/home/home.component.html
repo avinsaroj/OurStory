@@ -61,7 +61,7 @@
               <div class="col-lg-8 col-md-6 col-sm-12">
                 <h2> <button class="btns" *ngIf="!aboutUF.enable" (click)="onClickAboutF()">
                     <i class="far fa-edit ml-1" style="font-size: 15px;"></i></button>
-                  <button class="btns" *ngIf="aboutUF.enable" (click)="onClickAboutF()">
+                  <button class="btns" *ngIf="aboutUF.enable" (click)="OnclickAboutUFsave()">
                     <i class="far fa-save ml-1" style="font-size: 15px;"></i></button>
                   About <span><input [ngClass]="aboutUF.enable==false?'enableabouttext':'Desenableabouttext'"
                       [(ngModel)]="this.aboutUF.name" [disabled]="!aboutUF.enable" />
@@ -72,7 +72,10 @@
               </div>
               <div class="col-lg-4 col-md-6 col-sm-12">
                 <div class="about-img">
+
                   <img [src]="this.aboutUF.imageName" class="img-fluid rounded" loading="lazy" alt="Fresh Orangey" />
+                  <button class="btns" [hidden]="!aboutUF.enable" (click)="compressFileUF()"> <i class="far fa-file-image ml-1" style="font-size: 15px;"></i></button>
+                
                 </div>
               </div>
 
@@ -84,12 +87,14 @@
               <div class="col-lg-4 col-md-6 col-sm-12">
                 <div class="about-img">
                   <img class="img-fluid rounded" src="{{this.aboutU.imageName}}" alt="" />
+                  <button class="btns" [hidden]="!aboutU.enable" (click)="compressFileU()"> <i class="far fa-file-image ml-1" style="font-size: 15px;"></i></button>
+                
                 </div>
               </div>
               <div class="col-lg-8 col-md-6 col-sm-12">
                 <h2><button class="btns" *ngIf="!aboutU.enable" (click)="onClickAboutU()"> <i class="far fa-edit ml-1"
                       style="font-size: 15px;"></i></button>
-                  <button class="btns" *ngIf="aboutU.enable" (click)="onClickAboutU()">
+                  <button class="btns" *ngIf="aboutU.enable" (click)="OnclickAboutUsave()">
                     <i class="far fa-save ml-1" style="font-size: 15px;"></i></button>
                   About <span><input [disabled]="!aboutU.enable"  [ngClass]="aboutU.enable==false?'enableabouttext':'Desenableabouttext'"
                       [(ngModel)]="this.aboutU.name" />

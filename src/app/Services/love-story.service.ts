@@ -68,6 +68,12 @@ export class LoveStoryService {
   InsertOurStory(model:OurStoryModel):Observable<SingleServiceResponce<number>>{
     return this.HttpClient.post<SingleServiceResponce<number>>(this.APiUrl+"InsertOurStory",model)
   }
+  InsertAboutU(model:AboutUsRequest):Observable<SingleServiceResponce<number>>{
+    return this.HttpClient.post<SingleServiceResponce<number>>(this.APiUrl+"InsertAboutU",model)
+  }
+  InsertAboutUF(model:AboutUsRequest):Observable<SingleServiceResponce<number>>{
+    return this.HttpClient.post<SingleServiceResponce<number>>(this.APiUrl+"InsertAboutUF",model)
+  }
 }
 
 

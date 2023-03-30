@@ -13,7 +13,7 @@ import { UserAccountDto } from 'src/app/Models/user-account-dto';
 import { AuthService } from 'src/app/Services/auth.service';
 import { LoveStoryService } from 'src/app/Services/love-story.service';
 import { UtilityService } from 'src/app/Services/utility.service';
-
+import {NgxImageCompressService} from 'ngx-image-compress';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -38,58 +38,11 @@ export class HomeComponent  implements OnInit{
   enableAboutF=false;
   enableOurStory=true;
   enableOurFamily=true;
-  
-  AboutUform: FormGroup;
-  AboutUF:FormGroup;
-  OurStoryForm:FormGroup;
-  Ourfamily:FormGroup;
+  imgResultAfterCompression: string = '';
+ 
   example = { first: "", last: "" };
-  constructor(builder: FormBuilder,private LoveStory: LoveStoryService, public AuthService: AuthService, private router: Router, public utilityService: UtilityService) {
-    
-    this.Ourfamily=builder.group({
-      id: [{value: '', disabled: this.enableAboutU}],
-      imageName: [{value: '', disabled: this.enableAboutU}],
-      relation: [{value: '', disabled: this.enableAboutU}],
-      descs: [{value: '', disabled: this.enableAboutU}],
-      createdOn: [{value: '', disabled: this.enableAboutU}],
-      createdBy: [{value: '', disabled: this.enableAboutU}],
-      updatedOn: [{value: '', disabled: this.enableAboutU}],
-      updatedBy: [{value: '', disabled: this.enableAboutU}],
-      userId: [{value: '', disabled: this.enableAboutU}],
-    });
- this.OurStoryForm=builder.group({
-  id: [{value: '', disabled: this.enableAboutU}],
-  titleName: [{value: '', disabled: this.enableAboutU}],
-  desciption: [{value: '', disabled: this.enableAboutU}],
-  meetdate:[{value:'', disabled: this.enableAboutU}],
-  createdOn: [{value: '', disabled: this.enableAboutU}],
-  createdBy: [{value: '', disabled: this.enableAboutU}],
-  updatedOn: [{value: '', disabled: this.enableAboutU}],
-  updatedBy: [{value: '', disabled: this.enableAboutU}],
-  userId: [{value: '', disabled: this.enableAboutU}], 
- });
-    this.AboutUform=builder.group({
-      id :[{value: '', disabled: this.enableAboutU}],
-      name :[{value: '', disabled: this.enableAboutU}],
-     createdOn :[{value: '', disabled: this.enableAboutU}],
-     imageName :[{value: '', disabled: this.enableAboutU}],
-      descrip  :[{value: '', disabled: this.enableAboutU}],
-      createdBy :[{value: '', disabled: this.enableAboutU}],
-    updatedOn  :[{value: '', disabled: this.enableAboutU}],
-      updatedBy :[{value: '', disabled: this.enableAboutU}],
-     userId   :[{value: '', disabled: this.enableAboutU}],
-    });
-    this.AboutUF=builder.group({
-      id :[{value: '', disabled: this.enableAboutF}],
-      name :[{value: '', disabled: this.enableAboutF}],
-     createdOn :[{value: '', disabled: this.enableAboutF}],
-     imageName :[{value: '', disabled: this.enableAboutF}],
-      descrip  :[{value: '', disabled: this.enableAboutF}],
-      createdBy :[{value: '', disabled: this.enableAboutF}],
-    updatedOn  :[{value: '', disabled: this.enableAboutF}],
-      updatedBy :[{value: '', disabled: this.enableAboutF}],
-     userId   :[{value: '', disabled: this.enableAboutF}],
-    });
+  constructor(private imageCompress: NgxImageCompressService,builder: FormBuilder,private LoveStory: LoveStoryService, public AuthService: AuthService, private router: Router, public utilityService: UtilityService) {
+  
   }
  
 
@@ -128,7 +81,7 @@ export class HomeComponent  implements OnInit{
         this.LoveStory.getAboutU(respose.data.userId).subscribe(resp => {
           if (resp.success == true) {
             this.aboutU = resp.data;
-           //console.log(this.aboutU);
+           console.log(this.aboutU);
           }
 
         });
@@ -261,10 +214,7 @@ export class HomeComponent  implements OnInit{
     }
     OnclickOurFamilysave(item:OurFamilyModel){
       
-      if(this.Ourfamily.valid){
-        
-         let Family =Object.assign({},this.Ourfamily.value);
-        
+    
          this.LoveStory.InsertFamily(item).subscribe(resp=>{
 
         if(resp.success){
@@ -275,9 +225,73 @@ export class HomeComponent  implements OnInit{
          })
         
       
-      }
+      
     
  
+    }
+    OnclickAboutUFsave(){
+      
+    
+      this.LoveStory.InsertAboutUF(this.aboutUF).subscribe(resp=>{
+
+     if(resp.success){
+     this.aboutUF.enable=false;
+     }
+      })
+     
+   
+   
+ 
+
+ }
+ OnclickAboutUsave(){
+      
+    
+  this.LoveStory.InsertAboutU(this.aboutU).subscribe(resp=>{
+
+ if(resp.success){
+this.aboutU.enable=false;
+ }
+  })
+ 
+
+
+
+
+}
+    compressFileUF() {
+      this.imageCompress.uploadFile().then(({image, orientation}) => {
+        
+          console.log('Size in bytes of the uploaded image was:', this.imageCompress.byteCount(image));
+    
+          this.imageCompress
+              .compressFile(image, orientation, 40, 40) // 50% ratio, 50% quality
+              .then(compressedImage => {
+                if(compressedImage!=null){
+                  this.aboutUF.imageName= this.imgResultAfterCompression = compressedImage;
+                 
+                }
+               
+                  
+              });
+      });
+    }
+    compressFileU() {
+      this.imageCompress.uploadFile().then(({image, orientation}) => {
+        
+          console.log('Size in bytes of the uploaded image was:', this.imageCompress.byteCount(image));
+    
+          this.imageCompress
+              .compressFile(image, orientation, 40, 40) // 50% ratio, 50% quality
+              .then(compressedImage => {
+                if(compressedImage!=null){
+                  this.aboutU.imageName= this.imgResultAfterCompression = compressedImage;
+                 
+                }
+               
+                  
+              });
+      });
     }
 
 }
