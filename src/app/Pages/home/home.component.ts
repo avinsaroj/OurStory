@@ -32,6 +32,7 @@ export class HomeComponent  implements OnInit{
   ourStorymodel: OurStoryModel[] = [];
   AddStory:OurStoryModel={} as OurStoryModel;
   OurGallery:GalleryModel[]=[];
+  addOurGallery:GalleryModel={} as GalleryModel;
   ourFamily:OurFamilyModel[]=[];
   AddFamily:OurFamilyModel={} as OurFamilyModel;
   logo:LogoModel= {} as LogoModel;
@@ -182,6 +183,26 @@ export class HomeComponent  implements OnInit{
     AddStoryBtn(){
     this.ourStorymodel.push(this.AddStory);
     }
+    AddGallery(){
+      this.addOurGallery.enable=true;
+      this.OurGallery.push(this.addOurGallery);
+    }
+    OnClickSavegalley(item:GalleryModel){
+      if(item.userId==null){
+        item.userId=this.Userdetails.userId;
+        item.createdBy=this.Userdetails.userName;
+        
+      }
+      this.LoveStory.InsertGallery(item).subscribe(resp=>{
+        if(resp.success){
+          
+          let indexValue = this.OurGallery.indexOf(item);
+          // changing specific element in array
+           this.OurGallery[indexValue].enable = false;
+         
+        }
+      })
+    }
     OnclickOurStorySave(item:OurStoryModel){
       if(item.userId==null){
         item.userId=this.Userdetails.userId;
@@ -190,21 +211,7 @@ export class HomeComponent  implements OnInit{
       }
         this.LoveStory.InsertOurStory(item).subscribe(resp=>{
 
-          if(resp.success){
-           // console.log(resp.success)
-            this.LoveStory.GetOurStory(this.Userdetails.userId).subscribe(resp=>{
         
-              if(resp.success==true){
-                this.ourStorymodel=resp.data;
-               // console.log(this.ourStorymodel);
-               
-               //  console.log(this.ourStorymodel.find(c=>c.id==item.id));
-               
-              }
-              
-                    });
-          
-          }
         })
       
      
@@ -314,6 +321,25 @@ this.aboutU.enable=false;
                 if(compressedImage!=null){
                   this.aboutUF.imageName= this.imgResultAfterCompression = compressedImage;
                  
+                }
+               
+                  
+              });
+      });
+    }
+    compressFileGallery() {
+      this.imageCompress.uploadFile().then(({image, orientation}) => {
+        
+          console.log('Size in bytes of the uploaded image was:', this.imageCompress.byteCount(image));
+    
+          this.imageCompress
+              .compressFile(image, orientation, 40, 40) // 50% ratio, 50% quality
+              .then(compressedImage => {
+                if(compressedImage!=null){
+                  this.addOurGallery.imageName= this.imgResultAfterCompression = compressedImage;
+                 if(this.addOurGallery!=null){
+                 
+                 }
                 }
                
                   
