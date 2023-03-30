@@ -30,8 +30,10 @@ export class HomeComponent  implements OnInit{
   postModel:PostModel[]=[];
   dstaLoad = false;
   ourStorymodel: OurStoryModel[] = [];
+  AddStory:OurStoryModel={} as OurStoryModel;
   OurGallery:GalleryModel[]=[];
   ourFamily:OurFamilyModel[]=[];
+  AddFamily:OurFamilyModel={} as OurFamilyModel;
   logo:LogoModel= {} as LogoModel;
   navBarModer:NavBarModel[]=[];
   enableAboutU=false;
@@ -177,8 +179,15 @@ export class HomeComponent  implements OnInit{
       // console.log(item.enable)
  
     }
+    AddStoryBtn(){
+    this.ourStorymodel.push(this.AddStory);
+    }
     OnclickOurStorySave(item:OurStoryModel){
-    
+      if(item.userId==null){
+        item.userId=this.Userdetails.userId;
+        item.createdBy=this.Userdetails.userName;
+        
+      }
         this.LoveStory.InsertOurStory(item).subscribe(resp=>{
 
           if(resp.success){
@@ -201,6 +210,9 @@ export class HomeComponent  implements OnInit{
      
        
  
+    }
+    AddFamilybtn(){
+      this.ourFamily.push(this.AddFamily);
     }
     OnclickOurFamily(item:OurFamilyModel){
       
@@ -225,6 +237,11 @@ export class HomeComponent  implements OnInit{
     OnclickOurFamilysave(item:OurFamilyModel){
       
     
+    if(item.userId==null){
+      item.userId=this.Userdetails.userId;
+      item.createdBy=this.Userdetails.userName;
+      
+    }
          this.LoveStory.InsertFamily(item).subscribe(resp=>{
 
         if(resp.success){
