@@ -20,6 +20,7 @@ import { NavBarModel } from '../Models/nav-bar-model';
 export class LoveStoryService {
   //https://localhost:7289/
   //https://192.168.1.33/
+  
   APiUrl: string = 'https://192.168.1.35/api/LoveStory/';
   constructor(private HttpClient: HttpClient, private router: Router) { }
   GetAllPost():Observable<ServiceResponce<PostModel>>{
@@ -76,6 +77,9 @@ export class LoveStoryService {
   }
   InsertNavbar(model:NavBarModel):Observable<SingleServiceResponce<number>>{
     return this.HttpClient.post<SingleServiceResponce<number>>(this.APiUrl+"InsertNavBar",model)
+  }
+  InsertGallery(model:GalleryModel):Observable<SingleServiceResponce<number>>{
+    return this.HttpClient.post<SingleServiceResponce<number>>(this.APiUrl+"InsertGalley",model)
   }
 }
 
