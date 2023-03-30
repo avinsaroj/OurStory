@@ -11,7 +11,7 @@
     <div class="carousel-inner">
       <div class="carousel-item active" [ngClass]="{ 'active': i==0}" *ngFor="let item of navBarModer; let i=index">
 
-        <img src="{{item.imageName}}" class="d-block w-100" alt="...">
+        <img src="{{item.imageName}}" class="d-block w-100" alt="..." style="height: 50vh;">
         <h2 class="text-center mb-5 ">         <button class="btns ml-3" [hidden]="!item.enable" (click)="compressFileNav(item)"> <i class="far fa-file-image ml-1" style="font-size: 15px;"></i></button>
 
           <button class="btns" *ngIf="!item.enable" (click)="OnclickOurNavBar(item)">
