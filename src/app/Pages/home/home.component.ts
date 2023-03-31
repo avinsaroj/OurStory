@@ -43,8 +43,8 @@ export class HomeComponent  implements OnInit{
   enableOurStory=true;
   enableOurFamily=true;
   imgResultAfterCompression: string = '';
-  imageObject: ImageSlider []=[];
-  addimage:ImageSlider={} as ImageSlider;
+  imageObject: ImageSlider[]= [];
+  addimage: ImageSlider=new ImageSlider();
   example = { first: "", last: "" };
   constructor(private imageCompress: NgxImageCompressService,builder: FormBuilder,private LoveStory: LoveStoryService, public AuthService: AuthService, private router: Router, public utilityService: UtilityService) {
   
@@ -131,11 +131,11 @@ export class HomeComponent  implements OnInit{
                   if(resp.success==true){
                     this.OurGallery=resp.data;
                     for (let i = 0; i < this.OurGallery.length; i++) {
-                      const element = this.OurGallery[i];
+                      var element = this.OurGallery[i];
                       
-                        this.addimage.image=element.imageName,
-                        this.addimage.thumbImage=element.imageName,
-                        this.addimage.alt="hi..",
+                      this.addimage=new ImageSlider();
+                       this.addimage.image=element.imageName;
+                       this.addimage.thumbImage=element.imageName;
                        
                       this.imageObject.push(this.addimage);
                     }

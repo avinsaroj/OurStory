@@ -1,6 +1,6 @@
-export interface ImageSlider {
-    image:string,
-    thumbImage:string,
-    alt:string,
-    title: string,
+export class ImageSlider {
+    image!:string;
+    thumbImage!:string;
+    alt!:string;
+    title!: string;
 }
