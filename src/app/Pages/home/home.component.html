@@ -239,7 +239,15 @@
     </div>
   </div>
   <!-- End Family -->
-
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <ng-image-slider [images]="imageObject" #nav></ng-image-slider>
+  
+      </div>
+    </div>
+  </div>
+  
   <!-- Start Gallery -->
   <!-- <div id="gallery" class="gallery-box">
     <div class="container-fluid">
@@ -308,13 +316,5 @@
   *ngIf="!dstaLoad">
   <div class="spinner-border" role="status">
     <span class="sr-only">Loading...</span>
-  </div>
-</div>
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <ng-image-slider [images]="imageObject" #nav></ng-image-slider>
-
-    </div>
   </div>
 </div>
