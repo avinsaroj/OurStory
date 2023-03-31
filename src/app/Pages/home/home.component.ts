@@ -14,6 +14,7 @@ import { AuthService } from 'src/app/Services/auth.service';
 import { LoveStoryService } from 'src/app/Services/love-story.service';
 import { UtilityService } from 'src/app/Services/utility.service';
 import {NgxImageCompressService} from 'ngx-image-compress';
+import { ImageSlider } from 'src/app/Models/image-slider';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -42,7 +43,8 @@ export class HomeComponent  implements OnInit{
   enableOurStory=true;
   enableOurFamily=true;
   imgResultAfterCompression: string = '';
- 
+  imageObject: ImageSlider []=[];
+  addimage:ImageSlider={} as ImageSlider;
   example = { first: "", last: "" };
   constructor(private imageCompress: NgxImageCompressService,builder: FormBuilder,private LoveStory: LoveStoryService, public AuthService: AuthService, private router: Router, public utilityService: UtilityService) {
   
@@ -128,6 +130,15 @@ export class HomeComponent  implements OnInit{
         
                   if(resp.success==true){
                     this.OurGallery=resp.data;
+                    for (let i = 0; i < this.OurGallery.length; i++) {
+                      const element = this.OurGallery[i];
+                      
+                        this.addimage.image=element.imageName,
+                        this.addimage.thumbImage=element.imageName,
+                        this.addimage.alt="hi..",
+                       
+                      this.imageObject.push(this.addimage);
+                    }
                   // console.log(this.OurGallery)
                    
                   }
@@ -404,5 +415,6 @@ this.aboutU.enable=false;
               });
       });
     }
+
 
 }

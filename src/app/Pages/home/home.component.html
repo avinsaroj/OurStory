@@ -12,16 +12,17 @@
       <div class="carousel-item active" [ngClass]="{ 'active': i==0}" *ngFor="let item of navBarModer; let i=index">
 
         <img src="{{item.imageName}}" class="d-block w-100" alt="..." style="height: 100vh;">
-        <h2 class="text-center mb-5 ">         <button class="btns ml-3" [hidden]="!item.enable" (click)="compressFileNav(item)"> <i class="far fa-file-image ml-1" style="font-size: 15px;"></i></button>
+        <h2 class="text-center mb-5 "> <button class="btns ml-3" [hidden]="!item.enable"
+            (click)="compressFileNav(item)"> <i class="far fa-file-image ml-1" style="font-size: 15px;"></i></button>
 
           <button class="btns" *ngIf="!item.enable" (click)="OnclickOurNavBar(item)">
-          <i class="far fa-edit ml-1" style="font-size: 15px;"></i></button>
-          
+            <i class="far fa-edit ml-1" style="font-size: 15px;"></i></button>
 
-      </h2>
-      <button class="btns" *ngIf="item.enable" (click)="OnclickOurNavbarsave(item)">
-        <i class="far fa-save ml-2" style="font-size: 15px;"></i></button>
-      
+
+        </h2>
+        <button class="btns" *ngIf="item.enable" (click)="OnclickOurNavbarsave(item)">
+          <i class="far fa-save ml-2" style="font-size: 15px;"></i></button>
+
         <div class="carousel-caption d-none d-md-block">
           <div class="lbox-caption">
             <div class="lbox-details">
@@ -29,14 +30,15 @@
               <h2>{{item.p}}</h2>
               <p>Save The Date <strong>20 June 2018</strong></p>
               <a href="#" class="btn ">Contact</a>
-              <h2>         <button class="btns ml-3" [hidden]="!item.enable" (click)="compressFileNav(item)"> <i class="far fa-file-image ml-1" style="font-size: 15px;"></i></button>
+              <h2> <button class="btns ml-3" [hidden]="!item.enable" (click)="compressFileNav(item)"> <i
+                    class="far fa-file-image ml-1" style="font-size: 15px;"></i></button>
 
                 <button class="btns" *ngIf="!item.enable" (click)="OnclickOurNavBar(item)">
-                <i class="far fa-edit ml-1" style="font-size: 15px;"></i></button>
+                  <i class="far fa-edit ml-1" style="font-size: 15px;"></i></button>
                 <button class="btns" *ngIf="item.enable" (click)="OnclickOurNavbarsave(item)">
                   <i class="far fa-save ml-2" style="font-size: 15px;"></i></button>
-      
-            </h2>
+
+              </h2>
 
             </div>
           </div>
@@ -88,14 +90,16 @@
                   </span>
                 </h2>
                 <p> <textarea [ngClass]="aboutUF.enable==false?'enableabouttextarea':'Desenableabouttextarea'"
-                    style="width: 100%;" [disabled]="!aboutUF.enable"  [(ngModel)]="this.aboutUF.descrip"></textarea></p>
+                    style="width: 100%;" [disabled]="!aboutUF.enable" [(ngModel)]="this.aboutUF.descrip"></textarea></p>
               </div>
               <div class="col-lg-4 col-md-6 col-sm-12">
                 <div class="about-img">
 
-                  <img [src]="this.aboutUF.imageName" class="img-fluid rounded" loading="lazy" alt="Fresh Orangey" style="width: 100%;height: 70vh;"  />
-                  <button class="btns" [hidden]="!aboutUF.enable" (click)="compressFileUF()"> <i class="far fa-file-image ml-1" style="font-size: 15px;"></i></button>
-                
+                  <img [src]="this.aboutUF.imageName" class="img-fluid rounded" loading="lazy" alt="Fresh Orangey"
+                    style="width: 100%;height: 70vh;" />
+                  <button class="btns" [hidden]="!aboutUF.enable" (click)="compressFileUF()"> <i
+                      class="far fa-file-image ml-1" style="font-size: 15px;"></i></button>
+
                 </div>
               </div>
 
@@ -106,9 +110,11 @@
             <div class="row align-items-center about-main-info">
               <div class="col-lg-4 col-md-6 col-sm-12">
                 <div class="about-img">
-                  <img class="img-fluid rounded" src="{{this.aboutU.imageName}}" alt="" style="width: 100%;height: 70vh;"  />
-                  <button class="btns" [hidden]="!aboutU.enable" (click)="compressFileU()"> <i class="far fa-file-image ml-1" style="font-size: 15px;"></i></button>
-                
+                  <img class="img-fluid rounded" src="{{this.aboutU.imageName}}" alt=""
+                    style="width: 100%;height: 70vh;" />
+                  <button class="btns" [hidden]="!aboutU.enable" (click)="compressFileU()"> <i
+                      class="far fa-file-image ml-1" style="font-size: 15px;"></i></button>
+
                 </div>
               </div>
               <div class="col-lg-8 col-md-6 col-sm-12">
@@ -116,12 +122,14 @@
                       style="font-size: 15px;"></i></button>
                   <button class="btns" *ngIf="aboutU.enable" (click)="OnclickAboutUsave()">
                     <i class="far fa-save ml-1" style="font-size: 15px;"></i></button>
-                  About <span><input [disabled]="!aboutU.enable"  [ngClass]="aboutU.enable==false?'enableabouttext':'Desenableabouttext'"
+                  About <span><input [disabled]="!aboutU.enable"
+                      [ngClass]="aboutU.enable==false?'enableabouttext':'Desenableabouttext'"
                       [(ngModel)]="this.aboutU.name" />
                   </span>
                 </h2>
-                <textarea  [disabled]="!aboutU.enable" [ngClass]="aboutU.enable==false?'enableabouttextarea':'Desenableabouttextarea'"
-                  style="width: 100%;" [(ngModel)]="this.aboutU.descrip"></textarea>
+                <textarea [disabled]="!aboutU.enable"
+                  [ngClass]="aboutU.enable==false?'enableabouttextarea':'Desenableabouttextarea'" style="width: 100%;"
+                  [(ngModel)]="this.aboutU.descrip"></textarea>
 
 
               </div>
@@ -140,7 +148,8 @@
       <div class="row">
         <div class="col-lg-12">
           <div class="title-box">
-            <h2>Our Story  <button class="btns" (click)="AddStoryBtn()"><i class="far fas fa-plus ml-1" style="font-size: 15px;"></i></button> </h2>
+            <h2>Our Story <button class="btns" (click)="AddStoryBtn()"><i class="far fas fa-plus ml-1"
+                  style="font-size: 15px;"></i></button> </h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
           </div>
         </div>
@@ -153,9 +162,8 @@
           <div class="time-line-date-content">
             <p class="mbr-timeline-date mbr-fonts-style display-font" *ngIf="!item.enable">
               {{item.meetdate| date:'dd MMMM yyyy'}}</p>
-            <p class="mbr-timeline-date mbr-fonts-style display-font" *ngIf="item.enable" >
-              <input type="date" 
-                [(ngModel)]="item.meetdate" style="background-color: #f1f1f1;width: 100%;" />
+            <p class="mbr-timeline-date mbr-fonts-style display-font" *ngIf="item.enable">
+              <input type="date" [(ngModel)]="item.meetdate" style="background-color: #f1f1f1;width: 100%;" />
             </p>
 
           </div>
@@ -171,11 +179,12 @@
                 [ngClass]="item.enable==false?'enableabouttext':'Desenableabouttext'" [(ngModel)]="item.titleName"
                 style="background-color: #f1f1f1;" /></h4>
             <p class="mbr-timeline-text mbr-fonts-style display-7">
-              <textarea [disabled]="!item.enable" [ngClass]="item.enable==false?'enableabouttextarea':'Desenableabouttextarea'"
-                style="width: 100%;" [(ngModel)]="item.desciption" style="background-color: #f1f1f1;"></textarea>
+              <textarea [disabled]="!item.enable"
+                [ngClass]="item.enable==false?'enableabouttextarea':'Desenableabouttextarea'" style="width: 100%;"
+                [(ngModel)]="item.desciption" style="background-color: #f1f1f1;"></textarea>
             </p>
-           
-            
+
+
           </div>
         </div>
 
@@ -193,7 +202,8 @@
       <div class="row">
         <div class="col-lg-12">
           <div class="title-box">
-            <h2>Family  <button class="btns" (click)="AddFamilybtn()"><i class="far fas fa-plus ml-1" style="font-size: 15px;"></i></button>  </h2>
+            <h2>Family <button class="btns" (click)="AddFamilybtn()"><i class="far fas fa-plus ml-1"
+                  style="font-size: 15px;"></i></button> </h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
           </div>
         </div>
@@ -205,18 +215,20 @@
           <div class="single-team-member">
             <div class="family-img">
               <img class="img-fluid" src="{{item.imageName}}" alt="" style="width: 100%;height: 50vh;" />
-              <button class="btns" [hidden]="!item.enable" (click)="compressFileFamily(item)"> <i class="far fa-file-image ml-1" style="font-size: 15px;"></i></button>
+              <button class="btns" [hidden]="!item.enable" (click)="compressFileFamily(item)"> <i
+                  class="far fa-file-image ml-1" style="font-size: 15px;"></i></button>
             </div>
             <div class="family-info">
               <button class="btns" *ngIf="!item.enable" (click)="OnclickOurFamily(item)">
                 <i class="far fa-edit ml-1" style="font-size: 15px;"></i></button>
               <button class="btns" *ngIf="item.enable" (click)="OnclickOurFamilysave(item)">
                 <i class="far fa-save ml-1" style="font-size: 15px;"></i></button>
-              <h4> <input [disabled]="!item.enable" [ngClass]="item.enable==false?'enableabouttext':'Desenableabouttext'" [(ngModel)]="item.descs"
+              <h4> <input [disabled]="!item.enable"
+                  [ngClass]="item.enable==false?'enableabouttext':'Desenableabouttext'" [(ngModel)]="item.descs"
                   style="background-color: #f1f1f1;" /></h4>
               <p>
-                <input [disabled]="!item.enable" [ngClass]="item.enable==false?'enableabouttext':'Desenableabouttext'" [(ngModel)]="item.relation"
-                  style="background-color: #f1f1f1;" />
+                <input [disabled]="!item.enable" [ngClass]="item.enable==false?'enableabouttext':'Desenableabouttext'"
+                  [(ngModel)]="item.relation" style="background-color: #f1f1f1;" />
               </p>
             </div>
           </div>
@@ -229,7 +241,7 @@
   <!-- End Family -->
 
   <!-- Start Gallery -->
-  <div id="gallery" class="gallery-box">
+  <!-- <div id="gallery" class="gallery-box">
     <div class="container-fluid">
       <div class="row">
         <div class="col-lg-12">
@@ -257,7 +269,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
   <!-- End Gallery -->
 
   <!-- Start Events -->
@@ -292,8 +304,17 @@
   <!-- Start Contact -->
 
 </div>
-<div class="d-flex justify-content-center" style="align-content: center;align-items: center;height: 100vh;" *ngIf="!dstaLoad">
+<div class="d-flex justify-content-center" style="align-content: center;align-items: center;height: 100vh;"
+  *ngIf="!dstaLoad">
   <div class="spinner-border" role="status">
     <span class="sr-only">Loading...</span>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <ng-image-slider [images]="imageObject" #nav></ng-image-slider>
+
+    </div>
   </div>
 </div>
