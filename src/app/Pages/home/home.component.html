@@ -254,7 +254,12 @@
       <div class="row">
         <div class="col-lg-12">
           <div class="title-box">
-            <h2>Gallery <button class="btns" (click)="AddGallery()"><i class="far fas fa-plus ml-3" style="font-size: 15px;"></i></button> </h2>
+            <h2>Gallery
+            
+               <button class="btns" [hidden]="!enableOurGallery" (click)="compressFileGallery()"> <i class="far fa-file-image" style="font-size: 25px;margin: 50% 10px;"></i></button>
+               <button class="btns" [hidden]="enableOurGallery"  (click)="OnClickSavegalley(addOurGallery)">
+                 <i class="far fa-save " style="font-size: 25px; margin: 50% 10px;"></i></button>
+              </h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
           </div>
         </div>

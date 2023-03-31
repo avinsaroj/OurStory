@@ -38,10 +38,11 @@ export class HomeComponent  implements OnInit{
   AddFamily:OurFamilyModel={} as OurFamilyModel;
   logo:LogoModel= {} as LogoModel;
   navBarModer:NavBarModel[]=[];
-  enableAboutU=false;
+  addGallery:GalleryModel={} as GalleryModel
   enableAboutF=false;
   enableOurStory=true;
   enableOurFamily=true;
+  enableOurGallery=true;
   imgResultAfterCompression: string = '';
   imageObject: ImageSlider[]= [];
   addimage: ImageSlider=new ImageSlider();
@@ -202,17 +203,24 @@ export class HomeComponent  implements OnInit{
       if(item.userId==null){
         item.userId=this.Userdetails.userId;
         item.createdBy=this.Userdetails.userName;
-        
+        item.imageName=this.addOurGallery.imageName
       }
-      this.LoveStory.InsertGallery(item).subscribe(resp=>{
-        if(resp.success){
-          
-          let indexValue = this.OurGallery.indexOf(item);
-          // changing specific element in array
-           this.OurGallery[indexValue].enable = false;
+      if( item.userId==this.Userdetails.userId!=null && item.imageName!=null){
+        this.LoveStory.InsertGallery(item).subscribe(resp=>{
+          if(resp.success){
+           this.addimage=new ImageSlider();
+           this.addimage.image=item.imageName;
+           this.addimage.thumbImage=item.imageName;
+           
+          this.imageObject.push(this.addimage);
+          this.enableOurGallery=true;
          
+         
+          
         }
-      })
+       })
+      }
+    
     }
     OnclickOurStorySave(item:OurStoryModel){
       if(item.userId==null){
@@ -332,6 +340,7 @@ this.aboutU.enable=false;
                 if(compressedImage!=null){
                   this.aboutUF.imageName= this.imgResultAfterCompression = compressedImage;
                  
+                 
                 }
                
                   
@@ -348,9 +357,7 @@ this.aboutU.enable=false;
               .then(compressedImage => {
                 if(compressedImage!=null){
                   this.addOurGallery.imageName= this.imgResultAfterCompression = compressedImage;
-                 if(this.addOurGallery!=null){
-                 
-                 }
+                  this.enableOurGallery=false;
                 }
                
                   
