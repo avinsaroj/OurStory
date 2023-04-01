@@ -13,6 +13,9 @@ import { UtilityService } from 'src/app/Services/utility.service';
 })
 export class SignUpComponent implements OnInit {
   reactivefrom!:FormGroup;
+  LoginSuccuess:boolean=true;
+  loginResponce!:string;
+  dstaLoad = false;
   constructor(private _fb:FormBuilder,private OnlineShopservice:FruitsShopService,private AuthService:AuthService,public Utility:UtilityService,private router: Router){
  
   }
@@ -36,15 +39,26 @@ export class SignUpComponent implements OnInit {
   }
   SignButtonClick(){
     if(this.reactivefrom.valid){
-      console.log(this.reactivefrom.value);
+      this.dstaLoad = true;
             let loginModel =Object.assign({},this.reactivefrom.value);
-            this.AuthService.SignUp(loginModel).subscribe(resp=>{
-              if(resp.success){
-                
-                this.router.navigate(['Login']);
+            this.AuthService.SignUp(loginModel).subscribe({
+              next:(resp)=>{
+                if(resp.success){
+                  this.dstaLoad = false;
+                  this.router.navigate(['Login']);
+                }
+
+              },
+              error:(err)=>{
+                this.dstaLoad = false;
+                this.LoginSuccuess=false;
+                this.loginResponce='There was an error in retrieving data from the server'
               }
-              console.log(resp)
             });
+           
     }
+  }
+  CloseBtnClick(){
+    this.LoginSuccuess=true
   }
 }

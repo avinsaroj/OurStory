@@ -15,9 +15,9 @@ import { UtilityService } from 'src/app/Services/utility.service';
 export class LoginComponent  implements OnInit{
   reactiveform!:FormGroup;
   public LoginModel!:LoginModel;
- 
-  LoginSuccuess:boolean=false;
-  loginResponce!:SingleServiceResponce<string>;
+  dstaLoad = false;
+  LoginSuccuess:boolean=true;
+  loginResponce!:string;
   constructor(private _fb:FormBuilder,private OnlineShopservice:FruitsShopService,private AuthService:AuthService,public Utility:UtilityService,private router: Router){
  
   }
@@ -35,33 +35,43 @@ export class LoginComponent  implements OnInit{
   }
   LoginButtonClick(){
     if(this.reactiveform.valid){
-
+      this.dstaLoad = true;
       let loginModel =Object.assign({},this.reactiveform.value);
-    
-      this.AuthService.Login(loginModel).subscribe(Response=>
-        {
-         this.loginResponce=Response;
+      this.AuthService.Login(loginModel).subscribe({
+        next: (Response) => {
+          this.loginResponce=Response.message;
         
           if(Response.success==true){
             localStorage.setItem('AuthToken',Response.data)
             this.AuthService.isLoggedIn=true;
-           this.Utility.changeCart.next(2);
+          // this.Utility.changeCart.next(2);
         
         
           
             this.router.navigate(['/']);
           }
           else{
-            this.LoginSuccuess=true;
-          
+            this.LoginSuccuess=false;
+            this.dstaLoad = false;
           }
        
       
        
         
-      })
-      this.AuthService.userDetailFromToken();
+      
+        },
+        error: (error) => {
+          this.LoginSuccuess=false;
+          this.dstaLoad = false;
+          this.loginResponce='There was an error in retrieving data from the server'
+           
+        }
+    });
+     
     }
+  }
+  CloseBtnClick(){
+    this.LoginSuccuess=true
   }
 }
  
