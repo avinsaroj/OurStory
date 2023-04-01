@@ -32,6 +32,7 @@ export class HomeComponent  implements OnInit{
   dstaLoad = false;
   ourStorymodel: OurStoryModel[] = [];
   AddStory:OurStoryModel={} as OurStoryModel;
+  removedStory:OurStoryModel={} as OurStoryModel;
   OurGallery:GalleryModel[]=[];
   addOurGallery:GalleryModel={} as GalleryModel;
   ourFamily:OurFamilyModel[]=[];
@@ -422,6 +423,46 @@ this.aboutU.enable=false;
               });
       });
     }
+  DeleteGallery(id:number){
+    
+    this.LoveStory.DeleteGallery(id.toString()).subscribe(resp=>{
+      if(resp.success){
+        
+          this.OurGallery=this.OurGallery.filter(c=>c.id!=id);
+        
+      }
+      
+          })
+  }
+  DeleteStory(id:number){
+    
+    this.LoveStory.DeleteOurStory(id.toString()).subscribe(resp=>{
+if(resp.success){
+  
+    this.ourStorymodel=this.ourStorymodel.filter(c=>c.id!=id);
+  
+}
 
+    })
+  }
+  DeleteFamily(id:number){
+    
+    this.LoveStory.DeleteOurFamily(id.toString()).subscribe(resp=>{
+      if(resp.success){
+        
+          this.ourFamily=this.ourFamily.filter(c=>c.id!=id);
+        
+      }
+      
+          })
+  }
+  DeleteAboutU(id:number){
+    
+    this.LoveStory.DeleteAboutU(id.toString())
+  }
+  DeleteAboutF(id:number){
+    
+    this.LoveStory.DeleteAboutUF(id.toString())
+  }
 
 }

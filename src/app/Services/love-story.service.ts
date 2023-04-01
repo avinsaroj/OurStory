@@ -81,6 +81,21 @@ export class LoveStoryService {
   InsertGallery(model:GalleryModel):Observable<SingleServiceResponce<number>>{
     return this.HttpClient.post<SingleServiceResponce<number>>(this.APiUrl+"InsertGalley",model)
   }
+  DeleteAboutU(userid:string):Observable<SingleServiceResponce<number>>{
+    return this.HttpClient.get<SingleServiceResponce<number>>(this.APiUrl+`DeleteByIdAboutU/${userid}`)
+  }
+  DeleteAboutUF(userid:string):Observable<SingleServiceResponce<number>>{
+    return this.HttpClient.get<SingleServiceResponce<number>>(this.APiUrl+`DeleteByIdAboutUF/${userid}`)
+  }
+  DeleteOurStory(userid:string):Observable<SingleServiceResponce<number>>{
+    return this.HttpClient.get<SingleServiceResponce<number>>(this.APiUrl+`DeleteByIdOurStroy/${userid}`)
+  }
+  DeleteGallery(userid:string):Observable<SingleServiceResponce<number>>{
+    return this.HttpClient.get<SingleServiceResponce<number>>(this.APiUrl+`DeleteByIdOurGallery/${userid}`)
+  }
+  DeleteOurFamily(userid:string):Observable<SingleServiceResponce<number>>{
+    return this.HttpClient.get<SingleServiceResponce<number>>(this.APiUrl+`DeleteByIdOurFamily/${userid}`)
+  }
 }
 
 

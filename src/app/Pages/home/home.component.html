@@ -165,7 +165,7 @@
             <p class="mbr-timeline-date mbr-fonts-style display-font" *ngIf="item.enable">
               <input type="date" [(ngModel)]="item.meetdate" style="background-color: #f1f1f1;width: 100%;" />
             </p>
-
+           
           </div>
         </div>
         <span class="iconBackground"></span>
@@ -173,8 +173,10 @@
           <div class="timeline-text-content">
             <button class="btns" *ngIf="!item.enable" (click)="OnclickOurStory(item)">
               <i class="far fa-edit ml-1" style="font-size: 15px;"></i></button>
-            <button class="btns" *ngIf="item.enable" (click)="OnclickOurStorySave(item)">
-              <i class="far fa-save ml-1" style="font-size: 15px;"></i></button>
+            <button class="btns" *ngIf="item.enable" (click)="DeleteStory(item.id)">
+              <i class="fas fa-minus ml-1" style="font-size: 15px;"></i></button>
+              <button class="btns" style="margin-left: 10px;" *ngIf="item.enable" (click)="OnclickOurStorySave(item)">
+                <i class="far fa-save ml-1" style="font-size: 15px;"></i></button>
             <h4 class="mbr-timeline-title pb-3 mbr-fonts-style display-font"> <input [disabled]="!item.enable"
                 [ngClass]="item.enable==false?'enableabouttext':'Desenableabouttext'" [(ngModel)]="item.titleName"
                 style="background-color: #f1f1f1;" /></h4>
@@ -221,7 +223,9 @@
             <div class="family-info">
               <button class="btns" *ngIf="!item.enable" (click)="OnclickOurFamily(item)">
                 <i class="far fa-edit ml-1" style="font-size: 15px;"></i></button>
-              <button class="btns" *ngIf="item.enable" (click)="OnclickOurFamilysave(item)">
+                <button class="btns" *ngIf="item.enable" (click)="DeleteFamily(item.id)">
+                  <i class="fas fa-minus ml-1" style="font-size: 15px;"></i></button>
+                  <button class="btns" style="margin-left: 10px;" *ngIf="item.enable" (click)="OnclickOurFamilysave(item)">
                 <i class="far fa-save ml-1" style="font-size: 15px;"></i></button>
               <h4> <input [disabled]="!item.enable"
                   [ngClass]="item.enable==false?'enableabouttext':'Desenableabouttext'" [(ngModel)]="item.descs"
