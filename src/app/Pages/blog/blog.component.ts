@@ -48,7 +48,7 @@ export class BlogComponent implements OnInit {
     //   this.AllPost=resp.data;
     //   this.dstaLoad =true;
     // })
-    this.LoveStory.GetPostByPage(this.pageNumber,5).subscribe(resp=>{
+    this.LoveStory.GetPostByPage(this.pageNumber,6).subscribe(resp=>{
       if(resp.success){
         this.AllPost=resp.data;
         this.pageNumber+=1;
@@ -97,7 +97,7 @@ export class BlogComponent implements OnInit {
 
     if (scrollHeight - (scrollTop + clientHeight) <= this.threshold) {
      
-      this.LoveStory.GetPostByPage(this.pageNumber,5).subscribe(resp=>{
+      this.LoveStory.GetPostByPage(this.pageNumber,6).subscribe(resp=>{
         if(resp.success){
           const newItems = resp.data;
           this.AllPost = [...this.AllPost, ...newItems];       
