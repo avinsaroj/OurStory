@@ -18,10 +18,10 @@ import { NavBarModel } from '../Models/nav-bar-model';
   providedIn: 'root'
 })
 export class LoveStoryService {
-  APiUrl: string = 'https://localhost:7289/api/LoveStory/'
+ // APiUrl: string = 'https://localhost:7289/api/LoveStory/'
   //https://192.168.1.33/
   
- // APiUrl: string = 'https://192.168.1.35/api/LoveStory/';
+  APiUrl: string = 'https://192.168.1.36/api/LoveStory/';
   constructor(private HttpClient: HttpClient, private router: Router) { }
   GetAllPost():Observable<ServiceResponce<PostModel>>{
     return this.HttpClient.get<ServiceResponce<PostModel>>(this.APiUrl+"GetAllPost");  
@@ -96,6 +96,10 @@ export class LoveStoryService {
   DeleteOurFamily(userid:string):Observable<SingleServiceResponce<number>>{
     return this.HttpClient.get<SingleServiceResponce<number>>(this.APiUrl+`DeleteByIdOurFamily/${userid}`)
   }
+  GetPostByPage(pageNumber:number,pageSize:number){
+    return this.HttpClient.get<ServiceResponce<PostModel>>(this.APiUrl+`GetPostByPage/${pageNumber}/${pageSize}`); 
+  }
+  
 }
 
 
