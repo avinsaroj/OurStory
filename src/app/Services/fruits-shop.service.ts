@@ -15,7 +15,7 @@ import { HttpClient } from '@angular/common/http';
 export class FruitsShopService {
   changeCart = new Subject();
   //ApiUrl="https://192.168.1.35/api/OnlineShop/";
-   ApiUrl="http://avi7754-001-site1.itempurl.com/api/OnlineShop/";
+   ApiUrl="https://avi7754-001-site1.itempurl.com/api/OnlineShop/";
  //https://192.168.1.33/
    constructor(private HttpClient:HttpClient,private router: Router,) { }
    GetAllProducts():Observable<ServiceResponce<Products>>{
