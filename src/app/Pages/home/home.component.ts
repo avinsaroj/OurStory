@@ -336,7 +336,7 @@ this.aboutU.enable=false;
          // console.log('Size in bytes of the uploaded image was:', this.imageCompress.byteCount(image));
     
           this.imageCompress
-              .compressFile(image, orientation, 40, 40) // 50% ratio, 50% quality
+              .compressFile(image, orientation, 70, 70) // 50% ratio, 50% quality
               .then(compressedImage => {
                 if(compressedImage!=null){
                   this.aboutUF.imageName= this.imgResultAfterCompression = compressedImage;
@@ -354,7 +354,7 @@ this.aboutU.enable=false;
           //console.log('Size in bytes of the uploaded image was:', this.imageCompress.byteCount(image));
     
           this.imageCompress
-              .compressFile(image, orientation, 40, 40) // 50% ratio, 50% quality
+              .compressFile(image, orientation, 70, 70) // 50% ratio, 50% quality
               .then(compressedImage => {
                 if(compressedImage!=null){
                   this.addOurGallery.imageName= this.imgResultAfterCompression = compressedImage;
@@ -371,7 +371,7 @@ this.aboutU.enable=false;
          // console.log('Size in bytes of the uploaded image was:', this.imageCompress.byteCount(image));
     
           this.imageCompress
-              .compressFile(image, orientation, 40, 40) // 50% ratio, 50% quality
+              .compressFile(image, orientation, 70, 70) // 50% ratio, 50% quality
               .then(compressedImage => {
                 if(compressedImage!=null){
                   this.aboutU.imageName= this.imgResultAfterCompression = compressedImage;
@@ -389,7 +389,7 @@ this.aboutU.enable=false;
          // console.log('Size in bytes of the uploaded image was:', this.imageCompress.byteCount(image));
     
           this.imageCompress
-              .compressFile(image, orientation, 40, 40) // 50% ratio, 50% quality
+              .compressFile(image, orientation, 70, 70) // 50% ratio, 50% quality
               .then(compressedImage => {
                 if(compressedImage!=null){
                   let indexValue = this.ourFamily.indexOf(item);
@@ -409,7 +409,7 @@ this.aboutU.enable=false;
          // console.log('Size in bytes of the uploaded image was:', this.imageCompress.byteCount(image));
     
           this.imageCompress
-              .compressFile(image, orientation, 40, 40) // 50% ratio, 50% quality
+              .compressFile(image, orientation, 70, 70) // 50% ratio, 50% quality
               .then(compressedImage => {
                 if(compressedImage!=null){
                   let indexValue = this.navBarModer.indexOf(item);

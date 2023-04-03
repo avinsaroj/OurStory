@@ -1,42 +1,47 @@
 <div *ngIf="dstaLoad">
- 
+
 
   <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+        aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+        aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+        aria-label="Slide 3"></button>
     </div>
     <div class="carousel-inner">
       <div class="carousel-item " [ngClass]="{ 'active': i==0}" *ngFor="let item of navBarModer; let i=index">
-        <img src="{{item.imageName}}"  alt="..."  class="img-thumbnail " style="height: 100vh;" >
+        <img src="{{item.imageName}}" alt="..." class="img-fluid " style="height: 100vh;">
         <div class="carousel-caption  d-md-block">
           <h2 style="font-size: 40px; font-family: 'Marck Script', cursive; color: #dd666c;
           text-decoration: underline; font-weight: 800;">{{item.h1}}</h2>
           <h3 style="color: whitesmoke;font-size: 27px;">{{item.p}}</h3>
-          <h2> <button class="btns ml-3" [hidden]="!item.enable" (click)="compressFileNav(item)"> <i
-            class="far fa-file-image ml-1" style="font-size: 15px;"></i></button>
+           <button class="btns ml-3" [hidden]="!item.enable" (click)="compressFileNav(item)"> <i
+                class="far fa-file-image ml-1" style="font-size: 15px;"></i></button>
 
-        <button class="btns" *ngIf="!item.enable" (click)="OnclickOurNavBar(item)">
-          <i class="far fa-edit ml-1" style="font-size: 15px;"></i></button>
-        <button class="btns" *ngIf="item.enable" (click)="OnclickOurNavbarsave(item)">
-          <i class="far fa-save ml-2" style="font-size: 15px;"></i></button>
+            <button class="btns" *ngIf="!item.enable" (click)="OnclickOurNavBar(item)">
+              <i class="far fa-edit ml-1" style="font-size: 15px;"></i></button>
+            <button class="btns" style="margin-left: 10px;" *ngIf="item.enable" (click)="OnclickOurNavbarsave(item)">
+              <i class="far fa-save ml-2" style="font-size: 15px;"></i></button>
 
-      </h2>
+          
         </div>
       </div>
-     
+
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+      data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Previous</span>
     </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+      data-bs-slide="next">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
     </button>
   </div>
-  
+
   <!-- End Banner -->
 
   <!-- Start About us -->
@@ -144,7 +149,7 @@
             <p class="mbr-timeline-date mbr-fonts-style display-font" *ngIf="item.enable">
               <input type="date" [(ngModel)]="item.meetdate" style="background-color: #f1f1f1;width: 100%;" />
             </p>
-           
+
           </div>
         </div>
         <span class="iconBackground"></span>
@@ -154,8 +159,8 @@
               <i class="far fa-edit ml-1" style="font-size: 15px;"></i></button>
             <button class="btns" *ngIf="item.enable" (click)="DeleteStory(item.id)">
               <i class="fas fa-minus ml-1" style="font-size: 15px;"></i></button>
-              <button class="btns" style="margin-left: 10px;" *ngIf="item.enable" (click)="OnclickOurStorySave(item)">
-                <i class="far fa-save ml-1" style="font-size: 15px;"></i></button>
+            <button class="btns" style="margin-left: 10px;" *ngIf="item.enable" (click)="OnclickOurStorySave(item)">
+              <i class="far fa-save ml-1" style="font-size: 15px;"></i></button>
             <h4 class="mbr-timeline-title pb-3 mbr-fonts-style display-font"> <input [disabled]="!item.enable"
                 [ngClass]="item.enable==false?'enableabouttext':'Desenableabouttext'" [(ngModel)]="item.titleName"
                 style="background-color: #f1f1f1;" /></h4>
@@ -202,9 +207,9 @@
             <div class="family-info">
               <button class="btns" *ngIf="!item.enable" (click)="OnclickOurFamily(item)">
                 <i class="far fa-edit ml-1" style="font-size: 15px;"></i></button>
-                <button class="btns" *ngIf="item.enable" (click)="DeleteFamily(item.id)">
-                  <i class="fas fa-minus ml-1" style="font-size: 15px;"></i></button>
-                  <button class="btns" style="margin-left: 10px;" *ngIf="item.enable" (click)="OnclickOurFamilysave(item)">
+              <button class="btns" *ngIf="item.enable" (click)="DeleteFamily(item.id)">
+                <i class="fas fa-minus ml-1" style="font-size: 15px;"></i></button>
+              <button class="btns" style="margin-left: 10px;" *ngIf="item.enable" (click)="OnclickOurFamilysave(item)">
                 <i class="far fa-save ml-1" style="font-size: 15px;"></i></button>
               <h4> <input [disabled]="!item.enable"
                   [ngClass]="item.enable==false?'enableabouttext':'Desenableabouttext'" [(ngModel)]="item.descs"
@@ -225,12 +230,12 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        
-  
+
+
       </div>
     </div>
   </div>
-  
+
   <!-- Start Gallery -->
   <div id="gallery" class="gallery-box">
     <div class="container-fluid">
@@ -238,11 +243,12 @@
         <div class="col-lg-12">
           <div class="title-box">
             <h2>Gallery
-            
-               <button class="btns" [hidden]="!enableOurGallery" (click)="compressFileGallery()"> <i class="far fa-file-image" style="font-size: 25px;margin: 50% 10px;"></i></button>
-               <button class="btns" [hidden]="enableOurGallery"  (click)="OnClickSavegalley(addOurGallery)">
-                 <i class="far fa-save " style="font-size: 25px; margin: 50% 10px;"></i></button>
-              </h2>
+
+              <button class="btns" [hidden]="!enableOurGallery" (click)="compressFileGallery()"> <i
+                  class="far fa-file-image" style="font-size: 25px;margin: 50% 10px;"></i></button>
+              <button class="btns" [hidden]="enableOurGallery" (click)="OnClickSavegalley(addOurGallery)">
+                <i class="far fa-save " style="font-size: 25px; margin: 50% 10px;"></i></button>
+            </h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
           </div>
         </div>
@@ -251,7 +257,7 @@
         <div class="row">
           <ul class="popup-gallery clearfix">
             <ng-image-slider [images]="imageObject" #nav></ng-image-slider>
-            
+
           </ul>
         </div>
       </div>
