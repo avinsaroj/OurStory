@@ -32,7 +32,7 @@ export class FruitsShopService {
    }
    GetProductById(id:any):Observable<SingleServiceResponce<Products>>{
      
-     const api = `https://192.168.1.36/api/OnlineShop/GetProductById/${id}`;
+     const api = `http://avi7754-001-site1.itempurl.com/api/OnlineShop/GetProductById/${id}`;
      console.log(api);
      return this.HttpClient.get<SingleServiceResponce<Products>>(api);
    }

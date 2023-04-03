@@ -11,7 +11,7 @@ import { HttpClient } from '@angular/common/http';
 export class AuthService {
    //APiUrl: string ='https://localhost:7289/api/Auth/'
  
-  APiUrl: string = 'https://192.168.1.36/api/Auth/';
+  APiUrl: string = 'http://avi7754-001-site1.itempurl.com/api/Auth/';
   name: string = "";
   surname: string = "";
   userName: string = "";
