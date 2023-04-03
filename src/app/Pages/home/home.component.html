@@ -1,63 +1,42 @@
 <div *ngIf="dstaLoad">
-  <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+ 
+
+  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
-        aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
-        aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
-        aria-label="Slide 3"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
     </div>
     <div class="carousel-inner">
-      <div class="carousel-item active" [ngClass]="{ 'active': i==0}" *ngFor="let item of navBarModer; let i=index">
+      <div class="carousel-item " [ngClass]="{ 'active': i==0}" *ngFor="let item of navBarModer; let i=index">
+        <img src="{{item.imageName}}"  alt="..."  class="img-thumbnail " style="height: 100vh;" >
+        <div class="carousel-caption  d-md-block">
+          <h2 style="font-size: 40px; font-family: 'Marck Script', cursive; color: #dd666c;
+          text-decoration: underline; font-weight: 800;">{{item.h1}}</h2>
+          <h3 style="color: whitesmoke;font-size: 27px;">{{item.p}}</h3>
+          <h2> <button class="btns ml-3" [hidden]="!item.enable" (click)="compressFileNav(item)"> <i
+            class="far fa-file-image ml-1" style="font-size: 15px;"></i></button>
 
-        <img src="{{item.imageName}}" class="d-block w-100" alt="..." style="height: 100vh;">
-        <h2 class="text-center mb-5 "> <button class="btns ml-3" [hidden]="!item.enable"
-            (click)="compressFileNav(item)"> <i class="far fa-file-image ml-1" style="font-size: 15px;"></i></button>
-
-          <button class="btns" *ngIf="!item.enable" (click)="OnclickOurNavBar(item)">
-            <i class="far fa-edit ml-1" style="font-size: 15px;"></i></button>
-
-
-        </h2>
+        <button class="btns" *ngIf="!item.enable" (click)="OnclickOurNavBar(item)">
+          <i class="far fa-edit ml-1" style="font-size: 15px;"></i></button>
         <button class="btns" *ngIf="item.enable" (click)="OnclickOurNavbarsave(item)">
           <i class="far fa-save ml-2" style="font-size: 15px;"></i></button>
 
-        <div class="carousel-caption d-none d-md-block">
-          <div class="lbox-caption">
-            <div class="lbox-details">
-              <h1>{{item.h1}}</h1>
-              <h2>{{item.p}}</h2>
-              <p>Save The Date <strong>20 June 2018</strong></p>
-              <a href="#" class="btn ">Contact</a>
-              <h2> <button class="btns ml-3" [hidden]="!item.enable" (click)="compressFileNav(item)"> <i
-                    class="far fa-file-image ml-1" style="font-size: 15px;"></i></button>
-
-                <button class="btns" *ngIf="!item.enable" (click)="OnclickOurNavBar(item)">
-                  <i class="far fa-edit ml-1" style="font-size: 15px;"></i></button>
-                <button class="btns" *ngIf="item.enable" (click)="OnclickOurNavbarsave(item)">
-                  <i class="far fa-save ml-2" style="font-size: 15px;"></i></button>
-
-              </h2>
-
-            </div>
-          </div>
+      </h2>
         </div>
       </div>
-
+     
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Previous</span>
     </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
     </button>
   </div>
-
-
-
+  
   <!-- End Banner -->
 
   <!-- Start About us -->
