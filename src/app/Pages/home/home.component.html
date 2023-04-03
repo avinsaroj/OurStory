@@ -15,8 +15,24 @@
         <img src="{{item.imageName}}" alt="..." class="img-fluid " style="height: 100vh;">
         <div class="carousel-caption  d-md-block">
           <h2 style="font-size: 40px; font-family: 'Marck Script', cursive; color: #dd666c;
-          text-decoration: underline; font-weight: 800;">{{item.h1}}</h2>
-          <h3 style="color: whitesmoke;font-size: 27px;">{{item.p}}</h3>
+          text-decoration: underline; font-weight: 800;">
+        <textarea [hidden]="!item.enable"
+        [ngClass]="item.enable==false?'enableabouttext':'Desenableabouttext'" [(ngModel)]="item.h1"
+        style="background-color: #f1f1f1;" > </textarea>    
+        </h2>
+        <h2  *ngIf="!item.enable" style="font-size: 40px; font-family: 'Marck Script', cursive; color: #dd666c;
+        text-decoration: underline; font-weight: 800;">
+      {{item.h1}}
+      </h2>
+        
+          <h3  style="color: whitesmoke;font-size: 27px;">
+            <textarea [hidden]="!item.enable"
+            [ngClass]="item.enable==false?'enableabouttext':'Desenableabouttext'" [(ngModel)]="item.p"
+            style="background-color: #f1f1f1;" ></textarea>  
+          </h3>
+          <h3  *ngIf="!item.enable" style="color: whitesmoke;font-size: 27px;">
+           {{item.p}}
+          </h3>
            <button class="btns ml-3" [hidden]="!item.enable" (click)="compressFileNav(item)"> <i
                 class="far fa-file-image ml-1" style="font-size: 15px;"></i></button>
 
@@ -134,7 +150,7 @@
           <div class="title-box">
             <h2>Our Story <button class="btns" (click)="AddStoryBtn()"><i class="far fas fa-plus ml-1"
                   style="font-size: 15px;"></i></button> </h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+          
           </div>
         </div>
       </div>
@@ -190,7 +206,7 @@
           <div class="title-box">
             <h2>Family <button class="btns" (click)="AddFamilybtn()"><i class="far fas fa-plus ml-1"
                   style="font-size: 15px;"></i></button> </h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+           
           </div>
         </div>
       </div>
