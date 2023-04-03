@@ -74,7 +74,7 @@ export class AuthService {
   }
   GetUserDetails(username: string): Observable<SingleServiceResponce<UserAccountDto>> {
    // let api = `https://localhost:7289/api/UserAccount/GetUserDetails/${username}`;
-    let api = `https://192.168.1.36/api/UserAccount/GetUserDetails/${username}`;
+    let api = `http://avi7754-001-site1.itempurl.com/api/UserAccount/GetUserDetails/${username}`;
     return this.HttpClient.get<SingleServiceResponce<UserAccountDto>>(api);
 
   }

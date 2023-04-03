@@ -21,7 +21,7 @@ export class LoveStoryService {
  // APiUrl: string = 'https://localhost:7289/api/LoveStory/'
   //https://192.168.1.33/
   
-  APiUrl: string = 'http://avi7754-001-site1.itempurl.com/';
+  APiUrl: string = 'http://avi7754-001-site1.itempurl.com/api/LoveStory/';
   constructor(private HttpClient: HttpClient, private router: Router) { }
   GetAllPost():Observable<ServiceResponce<PostModel>>{
     return this.HttpClient.get<ServiceResponce<PostModel>>(this.APiUrl+"GetAllPost");  
