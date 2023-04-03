@@ -95,7 +95,7 @@ export class BlogComponent implements OnInit {
   onScroll(event: any) {
     const { scrollTop, scrollHeight, clientHeight } = event.target.documentElement;
 
-    if (scrollHeight - (scrollTop + clientHeight) <= this.threshold) {
+    if (scrollHeight -clientHeight ==scrollTop ) {
      
       this.LoveStory.GetPostByPage(this.pageNumber,6).subscribe(resp=>{
         if(resp.success){
